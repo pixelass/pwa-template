@@ -1,0 +1,8 @@
+{
+  "entry": ["src/pages/**"],
+  "extensions": [".ts", ".tsx"],
+  "ignorePatterns": ["**/node_modules/**"],
+  "ignoreUnresolved": ["type-fest"],
+  "ignoreUnimported": [],
+  "ignoreUnused": ["tslib", "@emotion/core", "react-is", "prettier"]
+}

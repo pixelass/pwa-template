@@ -1,0 +1,10 @@
+{
+  "close": "Schliessen",
+  "dialog": {
+    "title": "Ich bin ein Dialog",
+    "content": "Hier könnten wichtige Informationen stehen"
+  },
+  "hello": "Hallo",
+  "open-dialog": "Dialog öffnen",
+  "set-data": "Daten setzen"
+}

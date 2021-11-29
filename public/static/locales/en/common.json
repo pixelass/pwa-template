@@ -1,0 +1,10 @@
+{
+  "close": "Close",
+  "dialog": {
+    "title": "I am a dialog",
+    "content": "Here could be important information"
+  },
+  "hello": "Hello",
+  "open-dialog": "Open dialog",
+  "set-data": "Set data"
+}
