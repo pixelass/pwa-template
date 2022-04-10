@@ -1,5 +1,5 @@
 import { cache } from "@/ions/configs/emotion";
-import { theme } from "@/ions/configs/theme";
+import { theme } from "@/ions/theme";
 import {
 	CacheProvider as EmotionCacheProvider,
 	css,
