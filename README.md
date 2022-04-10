@@ -2,21 +2,32 @@
 
 This is a template for a Next.js app with PWA support.
 
-It uses the following tools/libraries:
+<!-- toc -->
 
-* [Storybook](https://storybook.js.org/)
-* [Cypress](https://cypress.io/)
-* [Jest](https://jestjs.io/)
-* [Commitlint](https://commitlint.js.org/)
-* [Stylelint](https://stylelint.io/)
-* [XO](https://github.com/xojs/xo)
-* [Prettier](https://prettier.io/)
+- [Libraries](#libraries)
+- [Getting started](#getting-started)
+- [Atomic design](#atomic-design)
+- [Behavior Driven Development](#behavior-driven-development)
+- [Test Driven Development](#test-driven-development)
+- [Commitlint](#commitlint)
+- [Commands](#commands)
+- [Skipping linters](#skipping-linters)
+
+<!-- tocstop -->
+
+## Libraries
+
+- [Storybook](https://storybook.js.org/)
+- [Cypress](https://cypress.io/)
+- [Jest](https://jestjs.io/)
+- [Commitlint](https://commitlint.js.org/)
+- [Stylelint](https://stylelint.io/)
+- [XO](https://github.com/xojs/xo)
+- [Prettier](https://prettier.io/)
 
 Additional libraries:
 
-* [MUI](https://mui.com/)
-
-
+- [MUI](https://mui.com/)
 
 ## Getting started
 
@@ -31,7 +42,6 @@ yarn dev
 ```shell
 yarn storybook
 ```
-
 
 ## Atomic design
 
@@ -52,7 +62,6 @@ and [testing-library](https://testing-library.com/docs/react-testing-library/int
 
 We use commitlint to ensure conventional commit messages. You can read more about our decision in
 the [documentation](./docs/COMMITS.md).
-
 
 ## Commands
 
