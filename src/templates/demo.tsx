@@ -5,18 +5,19 @@ import React from "react";
 
 export default function Template() {
 	const { t } = useTranslation(["common"]);
-	const bool = useStore(state => state.bool);
+	const count = useStore(state => state.count);
 	return (
-		<Button
-			color={bool ? "primary" : "secondary"}
-			variant="contained"
-			onClick={() => {
-				useStore.getState().set({ bool: !bool });
-			}}
-		>
-			<>
-				{t("common:toggle")} {bool ? t("common:off") : t("common:on")}
-			</>
-		</Button>
+		<>
+			<Button
+				variant="contained"
+				data-test-id="button"
+				onClick={() => {
+					useStore.getState().set({ count: count + 1 });
+				}}
+			>
+				<>{t("common:up")}</>
+			</Button>
+			<div data-test-id="count">{count}</div>
+		</>
 	);
 }

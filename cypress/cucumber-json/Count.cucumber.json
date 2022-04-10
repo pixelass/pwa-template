@@ -1,0 +1,73 @@
+[
+  {
+    "description": "\tAs a user,\n\tI want a counter,\n\tso that I can count things.",
+    "keyword": "Feature",
+    "name": "Count",
+    "line": 1,
+    "id": "count",
+    "tags": [],
+    "uri": "Count.feature",
+    "elements": [
+      {
+        "id": "count;the-user-wants-to-count-things",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "The user wants to count things",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "the user is on the root page",
+            "result": {
+              "status": "passed",
+              "duration": 1296000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "the user clicks the button",
+            "result": {
+              "status": "passed",
+              "duration": 174000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "the count is \"1\"",
+            "result": {
+              "status": "passed",
+              "duration": 33000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "the user clicks the button",
+            "result": {
+              "status": "passed",
+              "duration": 123000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the count is \"2\"",
+            "result": {
+              "status": "passed",
+              "duration": 20000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

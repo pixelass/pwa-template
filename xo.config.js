@@ -3,7 +3,7 @@
  */
 module.exports = {
 	extends: ["xo-react", "prettier"],
-	ignores: ["public", "*.config.js", "next-env.d.ts", "types/*.d.ts"],
+	ignores: ["public", "*.config.js", "next-env.d.ts", "types/*.d.ts", "cypress"],
 	plugins: ["prettier"],
 	env: ["browser", "node"],
 	overrides: [
@@ -37,5 +37,6 @@ module.exports = {
 	rules: {
 		"unicorn/prefer-node-protocol": 0,
 		"import/order": 0,
+		"node/file-extension-in-import": 0,
 	},
 };

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "target": "es5",
+    "lib": ["es2020", "dom"],
+    "types": ["cypress", "@types/node"]
+  },
+  "include": ["**/*.ts"]
+}
