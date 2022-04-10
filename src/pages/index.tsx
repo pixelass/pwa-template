@@ -3,9 +3,9 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 
-const Page = () => <Demo />;
-
-export default Page;
+export default function Page() {
+	return <Demo />;
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
 	props: {

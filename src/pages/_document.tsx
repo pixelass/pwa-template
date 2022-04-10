@@ -1,6 +1,6 @@
 import { cache } from "@/ions/configs/emotion";
 import createEmotionServer from "@emotion/server/create-instance";
-import Document, {
+import NextDocument, {
 	DocumentContext,
 	DocumentInitialProps,
 	Head,
@@ -8,11 +8,13 @@ import Document, {
 	Main,
 	NextScript,
 } from "next/document";
+
 import React, { Children } from "react";
+import pkg from "../../package.json";
 
 const { extractCritical } = createEmotionServer(cache);
 
-class AppDocument extends Document {
+class Document extends NextDocument {
 	static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
 		// Resolution order
 		//
@@ -39,7 +41,7 @@ class AppDocument extends Document {
 		// Render app and page and get the context of the page with collected side effects.
 
 		try {
-			const initialProps = await Document.getInitialProps(ctx);
+			const initialProps = await NextDocument.getInitialProps(ctx);
 			const styles = extractCritical(initialProps.html);
 			return {
 				...initialProps,
@@ -61,7 +63,30 @@ class AppDocument extends Document {
 	render() {
 		return (
 			<Html>
-				<Head />
+				<Head>
+					<meta charSet="utf-8" />
+					<meta name="version" content={pkg.version} />
+					<meta name="robots" content="noindex,nofollow" />
+					<meta name="application-name" content="pwa-template" />
+					<meta name="apple-mobile-web-app-title" content="pwa-template" />
+					<meta name="apple-mobile-web-app-capable" content="yes" />
+					<meta
+						name="apple-mobile-web-app-status-bar-style"
+						content="black-translucent"
+					/>
+					<meta name="format-detection" content="telephone=no" />
+					<meta name="mobile-web-app-capable" content="yes" />
+					<meta name="msapplication-tap-highlight" content="no" />
+					<link
+						rel="apple-touch-icon"
+						sizes="180x180"
+						href="/icons/apple-touch-icon.png"
+					/>
+					<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
+					<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
+					<link rel="manifest" href="/manifest.json" />
+					<link rel="shortcut icon" href="/favicon.ico" />
+				</Head>
 				<body>
 					<Main />
 					<NextScript />
@@ -71,4 +96,4 @@ class AppDocument extends Document {
 	}
 }
 
-export default AppDocument;
+export default Document;
