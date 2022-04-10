@@ -8,30 +8,30 @@ each other.
 ```
 atoms
    ┣━ my-component
-   ┃  ┣━ constants.js
-   ┃  ┣━ index.jsx
-   ┃  ┣━ styled.js
-   ┃  ┣━ styles.js 
-   ┃  ┣━ types.js
-   ┃  ┣━ utils.js
-   ┃  ┗━ [*].js
+   ┃  ┣━ constants.ts
+   ┃  ┣━ index.tsx
+   ┃  ┣━ styled.ts
+   ┃  ┣━ styles.ts 
+   ┃  ┣━ types.ts
+   ┃  ┣━ utils.ts
+   ┃  ┗━ [*].ts
    ┗━ ...
 ```
 
-* `constants.js`: local constants
-* `index.jsx`: the main component (`export default`)
-* `styled.js`: styled components via `import styled from "@emotion/styled"`
-* `styles.js`: styles  via `import {css} from "@emotion/react"`
-* `utils.js`: local utility functions
+* `constants.ts`: local constants
+* `index.tsx`: the main component (`export default`)
+* `styled.ts`: styled components via `import styled from "@emotion/styled"`
+* `styles.ts`: styles  via `import {css} from "@emotion/react"`
+* `utils.ts`: local utility functions
 * `[*].ts`: add more files in case you need them
-  * i.e. `items.{js,json}`
+  * i.e. `items.{ts,json}`
   
 ## Exports
 
-We use named exports in all files except for the `index.jsx`.
+We use named exports in all files except for the `index.tsx`.
 We need to use `export default` to allow better DX when using components in dynamic imports
 
 ## File extension
 
-Use `.jsx` if your file contains JSX. In all other cases use `.js` (or `.json` when applicable) 
+Use `.tsx` if your file contains tsx. In all other cases use `.ts` (or `.json` when applicable) 
 

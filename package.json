@@ -10,6 +10,8 @@
     "cypress": "npx cypress@9 open",
     "cypress:run": "npx cypress@9 run",
     "dev": "next dev",
+    "jest": "jest",
+    "jest:watch": "jest --watch",
     "lint": "yarn tsc:noEmit && yarn xo && yarn stylelint && next lint",
     "ncu": "yarn dlx npm-check-updates@11 -u --dep='prod,dev'",
     "ncu:minor": "yarn ncu -t minor",
