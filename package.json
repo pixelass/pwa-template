@@ -7,6 +7,7 @@
   "main": "n.a.",
   "scripts": {
     "build": "next build",
+    "build:test": "npx cross-env@7 NODE_ENV=test next build",
     "cypress": "npx cypress@9 open",
     "cypress:run": "npx cypress@9 run",
     "dev": "next dev",

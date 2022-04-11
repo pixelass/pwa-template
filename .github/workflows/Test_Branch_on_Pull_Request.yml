@@ -12,26 +12,21 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: n1hility/cancel-previous-runs@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read .nvmrc
-        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-        id: nvm
-
-      - name: Use Node.js (.nvmrc)
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          node-version-file: '.nvmrc'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: cache
         with:
           path: |
@@ -40,13 +35,13 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - name: Install dependencies
-        run: npm install
+        run: yarn
 
       - name: Lint all files
-        run: npm run lint
+        run: yarn lint
 
       - name: Build before e2e tests
-        run: npm run build:dev
+        run: yarn build:test
 
       - name: Run all tests
-        run: npm test
+        run: yarn test
