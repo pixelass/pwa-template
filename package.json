@@ -17,7 +17,7 @@
     "ncu": "yarn dlx npm-check-updates@11 -u --dep='prod,dev'",
     "ncu:minor": "yarn ncu -t minor",
     "ncu:patch": "yarn ncu -t patch",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "prettier": "prettier 'src/**/*.{ts,tsx}'",
     "release": "yarn dlx standard-version@9.3.1",
     "spj": "yarn dlx sort-package-json@1 package.json",
