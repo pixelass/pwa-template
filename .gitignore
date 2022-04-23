@@ -75,3 +75,8 @@ out
 
 # vercel
 .vercel
+
+public/workbox-*.js
+public/sw.js
+cypress/videos
+cypress/cucumber-json
