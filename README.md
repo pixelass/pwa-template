@@ -1,6 +1,8 @@
 # PWA Template
 
-This is a template for a Next.js app with PWA support.
+A template for Next.js with PWA support.
+
+<img src="./docs/resources/next-logo.png" alt="next logo" width="50%"/><img src="./docs/resources/pwa-logo.png" alt="pwa logo" width="50%"/>
 
 <!-- toc -->
 
