@@ -28,6 +28,13 @@ coverage
 # nyc test coverage
 .nyc_output
 
+# Cypress
+cypress/videos
+cypress/screenshots
+cypress/downloads
+cypress/cucumber-json
+
+
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
@@ -76,7 +83,6 @@ out
 # vercel
 .vercel
 
+## pwa
 public/workbox-*.js
 public/sw.js
-cypress/videos
-cypress/cucumber-json
