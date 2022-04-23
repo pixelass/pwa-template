@@ -11,6 +11,7 @@
     "cypress": "npx cypress@9 open",
     "cypress:run": "npx cypress@9 run",
     "dev": "next dev",
+    "eslint": "eslint '{**/*,*}.{js,ts,tsx}'",
     "jest": "jest",
     "jest:watch": "jest --watch",
     "lint": "yarn tsc:noEmit && yarn xo && yarn stylelint && next lint",
