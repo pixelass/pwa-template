@@ -138,8 +138,6 @@ If you need to skip a linter you can add the `--no-verify` flag.
 > Warning! We strongly advise against skipping linters.
 
 ```shell
-# Skipping commitlint
+# Skipping pre-commit hooks
 git commit README.md -m "this is a dirty commit" --no-verify
-# Skipping linters
-git push --no-verify
 ```
