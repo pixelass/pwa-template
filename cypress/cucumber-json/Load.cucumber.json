@@ -23,7 +23,7 @@
             "name": "the user is on the root page",
             "result": {
               "status": "passed",
-              "duration": 4515000000
+              "duration": 3113000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "the page is displayed",
             "result": {
               "status": "passed",
-              "duration": 252000000
+              "duration": 217000000
             }
           }
         ]
