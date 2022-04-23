@@ -1,0 +1,4 @@
+{
+  "*.{js,ts,tsx,json}": ["xo --fix", "prettier --write"],
+  "*.md}": ["prettier --write"]
+}

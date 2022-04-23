@@ -1,4 +1,3 @@
 {
-  "filter": "eslint",
-  "reject": ["eslint"]
+  "reject": ["stylelint", "stylelint-*"]
 }
