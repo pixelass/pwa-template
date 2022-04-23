@@ -42,7 +42,7 @@ Atoms are components that don't have any smaller component in them. They can use
 
 ## Molecules
 
-Molecules are components that have one or more [Atoms](#atoms) and or smaller atomic entities.
+Molecules are components that have one or more [atoms](#atoms) and or smaller atomic entities.
 
 **Good examples are:**
 
@@ -51,7 +51,7 @@ Molecules are components that have one or more [Atoms](#atoms) and or smaller at
 
 ## Organisms
 
-Organisms contain one or more [Organisms](#organisms) and or smaller atomic entities.
+Organisms contain one or more [molecules](#molecules) and or smaller atomic entities and other organisms.
 
 **Good examples are:**
 
@@ -67,7 +67,7 @@ Templates provide render and layout logic that changes based on data.
 Pages are the entry point of a user. A page will collect data from the server or another source, 
 choose a template and render and fill it with data. 
 In our case pages will be used by [next.js](https://nextjs.org/docs/basic-features/pages). We love
-how nicely this fits into our structure.
+how nicely this ties into atomic design.
 
 
 

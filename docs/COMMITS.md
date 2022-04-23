@@ -13,11 +13,11 @@ understanding on why this is helpful and how this works. You can also look at
 
 ### Good commit messages
 
-A good commit message is important for us for several reasons
+A good commit message is important for us for several reasons:
 
-1. Make use of automatic [Semantic Versions](https://semver.org/)
-2. Generate a change [changelog](../CHANGELOG.md)
-3. Give contributors a chance to easily understand what has been done
+1. Automate [Semantic Versions](https://semver.org/)
+2. Automate [changelog](../CHANGELOG.md)
+3. Give consumers and contributors a chance to easily understand what has been done
 
 In general the following rule applies:
 
@@ -29,23 +29,23 @@ In general the following rule applies:
 
 Chore commits should be used in the following cases:
 
-1. Update NPM packages
-2. Update NPM scripts
+1. Update dependencies
+2. Update scripts in package.json
 3. Update files outside the [Source folder](../src)
 4. Update configuration files
 
-**Updating npm packages:**
+**Update dependencies:**
 
 ```
-chore: update packages
+chore: update dependencies
 ## OR
-chore(npm): update packages
+chore(dependencies): update dependencies
 ```
 
-**Updating config files:**
+**Update config files:**
 
 ```
-chore: adjust xo.config
+chore: adjust xo configuration
 ## OR
 chore(xo): update configuration
 ## OR
@@ -57,7 +57,7 @@ chore(hooks): add pre-commit hook
 Docs commits should be used in the following cases:
 
 1. Update [documentation files](./)
-2. Update comments or doc-blocks in [Source files](../src)
+2. Update comments or doc-blocks in [source files](../src)
 
 **Update documentation:**
 
@@ -102,7 +102,7 @@ fixes: #123
 
 #### Feat
 
-Feature commit should be used for every feature-story.
+Feature commits should be used for every feature-story.
 Each story is on feature.
 
 **Add feature:**

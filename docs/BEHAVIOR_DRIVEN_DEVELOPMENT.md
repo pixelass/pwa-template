@@ -36,14 +36,10 @@ various tests.
 **Example:** `/cypress/integration/common/steps.js`
 
 ```js
-// helpers/index.js
-// export const pages = {
-//   root: "/",
-//   about: "/about",
-// };
+import { When } from "cypress-cucumber-preprocessor/steps";
 
-Given(/^the user is on the "([^"]*)" page$/, function (page) {
-  cy.visit(pages[page]);
+When(/^the user is on the root page$/, function () {
+  cy.visit("/");
 });
 ```
 
@@ -55,27 +51,19 @@ We write easy to understand, testable features.
 1. Define a `Scenario` as often as given
 1. Describe the expected behavior
 
-**Example:** `/cypress/integration/Navigation.feature`
+**Example:** `/cypress/integration/Load.feature`
 
 ```gherkin
-Feature: Navigation
+Feature: Load
 
   As a user,
-  I want a navigation,
-  so that I can navigate the app.
+  I want to see the page,
+  so that I can use the app.
 
-  Scenario: The user wants to navigate to the about page
+  Scenario: The user wants to see the page
 
-    Given the user is on the "root" page
-    When the user clicks on "About" in the navigation
-    Then the "about" page is visible
-
-  Scenario: The user wants to navigate to the root page
-
-    Given the user is on the "about" page
-    When the user clicks on "Home" in the navigation
-    Then the "root" page is visible
-
+    When the user is on the root page
+    Then the page is displayed
 ```
 
 The keywords `And` and `But` are syntactic sugar for `Given`, `When` and `Then`. They should not be
@@ -86,29 +74,21 @@ We separate steps and assertions:
 **Example:** `/cypress/integration/common/steps.js`
 
 ```js
-import { Given, When } from "cypress-cucumber-preprocessor/steps";
-import { pages, dataTestId } from "../helpers";
+import { When } from "cypress-cucumber-preprocessor/steps";
 
-Given(/^the user is on the "([^"]*)" page$/, function (page) {
-  cy.visit(pages[page]);
+When(/^the user is on the root page$/, function () {
+  cy.visit("/");
 });
-
-When(/^the user clicks on "([^"]*)" in the navigation$/, function (text) {
-  cy.get(dataTestId("navigation")).find("a").contains(text).click();
-});
-
 ```
 
 **Example:** `/cypress/integration/common/assertions.js`
 
 ```js
 import { Then } from "cypress-cucumber-preprocessor/steps";
-import { pages } from "../helpers";
 
-Then(/^the "([^"]*)" page is visible$/, function (page) {
-  cy.url().should("include", pages[page]);
+Then(/^the page is displayed$/, function () {
+  cy.get("#__next").should("exist");
 });
-
 ```
 
 ### Test selectors

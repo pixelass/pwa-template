@@ -92,9 +92,8 @@ Step 3: Allowing outside control
 When we build Software, we often want to have more control of our app's state. To allow this we can
 create a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
-Let's move our state to a 
-[Higher Order Component](https://reactjs.org/docs/higher-order-components.html). In our case this is
-the App.
+Let's [lift the state up](https://reactjs.org/docs/lifting-state-up.html). In our case the App will
+host the state.
 
 ```tsx
 import React, { useState } from "react";
@@ -163,14 +162,9 @@ const CheckpoxProvider = ({ children }) => {
 			setChecked((previousState) => !previousState);
 		}
 	}, []);
-	const context = useMemo(() => ({ checked, check, uncheck, toggle }), [
-		checked,
-		check,
-		uncheck,
-		toggle
-	]);
+    
 	return (
-		<CheckboxContext.Provider value={context}>
+		<CheckboxContext.Provider value={{ checked, check, uncheck, toggle }}>
 			{children}
 		</CheckboxContext.Provider>
 	);
@@ -265,25 +259,10 @@ in our case is a `boolean`. While we kept the previous examples simple and did n
 we could design our machines in the same way.
 
 This decision should be discussed with the team and then respected to keep the promise of "common"
-communication. Speaking different languages can major cause issues, a very good example is the
+communication. Speaking different languages can cause major issues, a very good example is the
 [Mars Climate Orbiter](https://en.wikipedia.org/wiki/Mars_Climate_Orbiter) failure.
 
 > An investigation attributed the failure to a measurement mismatch between two software systems: metric units by NASA and non-metric (imperial or "English") units by spacecraft builder Lockheed Martin.
-
-As you might have noticed, we also memoize our context via
-[`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo). This is very important since
-[object in javascript are unique](https://dmitripavlutin.com/how-to-compare-objects-in-javascript/),
-they would therefore change on each rendering cycle. Instead of building our own comparison utility,
-we can make use of React's memoization helpers.
-
-```tsx
-const context = useMemo(() => ({ isOpen, open, close, toggle }), [
-	isOpen,
-	open,
-	close,
-	toggle
-]);
-```
 
 ## Build something awesome, build with conscience
 

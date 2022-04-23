@@ -29,7 +29,7 @@ atoms
 ## Exports
 
 We use named exports in all files except for the `index.tsx`.
-We need to use `export default` to allow better DX when using components in dynamic imports
+We need to use `export default` to allow better DX when using components as dynamic imports
 
 ## File extension
 

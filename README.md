@@ -100,7 +100,7 @@ npm run cypress # local without server
 **Run unit tests:**
 
 ```shell
-npm run jest
+yarn jest
 # yarn jest:watch # watch
 # yarn test:jest # same as "yarn jest"
 ```
