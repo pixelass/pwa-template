@@ -1,6 +1,6 @@
 import { cache } from "@/ions/configs/emotion";
 import { fontFaces, globalStyles } from "@/ions/styles";
-import { theme } from "@/ions/theme";
+import { dark, light } from "@/ions/theme";
 import {
 	CacheProvider as EmotionCacheProvider,
 	ThemeProvider as EmotionThemeProvider,
@@ -8,9 +8,13 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import { appWithTranslation } from "next-i18next";
 import Head from "next/head";
-import React from "react";
+import React, { useMemo } from "react";
+import useDarkMode from "@/ions/hooks/dark-mode";
 
 function App({ Component, pageProps }) {
+	const mode = useDarkMode();
+	const theme = useMemo(() => (mode ? dark : light), [mode]);
+
 	return (
 		<>
 			{fontFaces}
