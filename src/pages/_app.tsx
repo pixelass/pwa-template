@@ -1,6 +1,6 @@
 import { cache } from "@/ions/configs/emotion";
 import { fontFaces, globalStyles } from "@/ions/styles";
-import { dark, light } from "@/ions/theme";
+import { dark, darkHighContrast, light, lightHighContrast } from "@/ions/theme";
 import {
 	CacheProvider as EmotionCacheProvider,
 	ThemeProvider as EmotionThemeProvider,
@@ -10,10 +10,28 @@ import { appWithTranslation } from "next-i18next";
 import Head from "next/head";
 import React, { useMemo } from "react";
 import useDarkMode from "@/ions/hooks/dark-mode";
+import useIncreasedContrast from "@/ions/hooks/increased-contrast";
+
+if (typeof window === "undefined") {
+	React.useLayoutEffect = () => {
+		/**/
+	};
+}
 
 function App({ Component, pageProps }) {
-	const mode = useDarkMode();
-	const theme = useMemo(() => (mode ? dark : light), [mode]);
+	const darkMode = useDarkMode();
+	const increasedContrast = useIncreasedContrast();
+	const theme = useMemo(
+		() =>
+			darkMode
+				? increasedContrast
+					? darkHighContrast
+					: dark
+				: increasedContrast
+				? lightHighContrast
+				: light,
+		[darkMode, increasedContrast]
+	);
 
 	return (
 		<>
