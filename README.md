@@ -58,7 +58,7 @@ We use behavior tests. You can read more about our decision in the
 
 ## Test Driven Development
 
-We jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/)
+We use jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/)
 and [testing-library](https://testing-library.com/docs/react-testing-library/intro/).
 
 ## Commitlint
