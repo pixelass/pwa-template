@@ -1,6 +1,6 @@
 # PWA Template
 
-A template for Next.js with PWA support.
+A template for Next.js with PWA support and i18n.
 
 <img src="./docs/resources/next-logo.png" alt="next logo" width="50%"/><img src="./docs/resources/pwa-logo.png" alt="pwa logo" width="50%"/>
 
@@ -30,6 +30,7 @@ A template for Next.js with PWA support.
 Additional libraries:
 
 - [MUI](https://mui.com/)
+- [i18next](https://www.i18next.com/) ([next-i18next](https://github.com/isaachinman/next-i18next))
 
 ## Getting started
 
