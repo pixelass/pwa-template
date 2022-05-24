@@ -12,6 +12,9 @@ import React, { useMemo } from "react";
 import useDarkMode from "@/ions/hooks/dark-mode";
 import useIncreasedContrast from "@/ions/hooks/increased-contrast";
 
+// Remove React warning about useLayoutEffect
+// Be careful when using this hook.
+// We use it to prevent flickering when the theme is adjusted to the user preferences
 if (typeof window === "undefined") {
 	React.useLayoutEffect = () => {
 		/**/
