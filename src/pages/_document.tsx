@@ -64,7 +64,7 @@ class Document extends NextDocument {
 		return (
 			<Html>
 				<Head>
-					<meta charSet="utf-8" />
+					<meta charSet="utf8" />
 					<meta name="version" content={pkg.version} />
 					<meta name="robots" content="noindex,nofollow" />
 					<meta name="application-name" content="pwa-template" />

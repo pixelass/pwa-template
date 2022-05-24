@@ -8,6 +8,9 @@ const typography = {
 export const dark = createTheme({
 	palette: {
 		mode: "dark",
+		primary: {
+			main: "#33aacc",
+		},
 	},
 	typography,
 });
@@ -15,6 +18,29 @@ export const dark = createTheme({
 export const light = createTheme({
 	palette: {
 		mode: "light",
+		primary: {
+			main: "#ccaa33",
+		},
+	},
+	typography,
+});
+
+export const darkHighContrast = createTheme({
+	palette: {
+		mode: "dark",
+		primary: {
+			main: "#00aaff",
+		},
+	},
+	typography,
+});
+
+export const lightHighContrast = createTheme({
+	palette: {
+		mode: "light",
+		primary: {
+			main: "#ffaa00",
+		},
 	},
 	typography,
 });
