@@ -1,6 +1,3 @@
-import { cache } from "@/ions/configs/emotion";
-import { fontFaces, globalStyles } from "@/ions/styles";
-import { dark, darkHighContrast, light, lightHighContrast } from "@/ions/theme";
 import {
 	CacheProvider as EmotionCacheProvider,
 	ThemeProvider as EmotionThemeProvider,
@@ -9,8 +6,12 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { appWithTranslation } from "next-i18next";
 import Head from "next/head";
 import React, { useMemo } from "react";
+
+import { cache } from "@/ions/configs/emotion";
 import useDarkMode from "@/ions/hooks/dark-mode";
 import useIncreasedContrast from "@/ions/hooks/increased-contrast";
+import { fontFaces, globalStyles } from "@/ions/styles";
+import { dark, darkHighContrast, light, lightHighContrast } from "@/ions/theme";
 
 // Remove React warning about useLayoutEffect
 // Be careful when using this hook.
@@ -24,17 +25,13 @@ if (typeof window === "undefined") {
 function App({ Component, pageProps }) {
 	const darkMode = useDarkMode();
 	const increasedContrast = useIncreasedContrast();
-	const theme = useMemo(
-		() =>
-			darkMode
-				? increasedContrast
-					? darkHighContrast
-					: dark
-				: increasedContrast
-				? lightHighContrast
-				: light,
-		[darkMode, increasedContrast]
-	);
+	const theme = useMemo(() => {
+		if (darkMode) {
+			return increasedContrast ? darkHighContrast : dark;
+		}
+
+		return increasedContrast ? lightHighContrast : light;
+	}, [darkMode, increasedContrast]);
 
 	return (
 		<>
