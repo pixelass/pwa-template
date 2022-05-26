@@ -1,7 +1,8 @@
-import Home from "@/templates/home";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+
+import Home from "@/templates/home";
 
 export default function Page() {
 	return <Home />;

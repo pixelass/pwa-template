@@ -1,4 +1,3 @@
-import { cache } from "@/ions/configs/emotion";
 import createEmotionServer from "@emotion/server/create-instance";
 import NextDocument, {
 	DocumentContext,
@@ -8,9 +7,10 @@ import NextDocument, {
 	Main,
 	NextScript,
 } from "next/document";
-
 import React, { Children } from "react";
-import pkg from "../../package.json";
+
+import { cache } from "@/ions/configs/emotion";
+import pkg from "~package.json";
 
 const { extractCritical } = createEmotionServer(cache);
 

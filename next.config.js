@@ -1,8 +1,10 @@
-const withTM = require("next-transpile-modules")(["@mui/material"]); // pass the modules you would like to see transpiled
+const process = require("node:process");
+
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
+const withTM = require("next-transpile-modules")(["@mui/material"]); // Pass the modules you would like to see transpiled
+
 const { i18n } = require("./next-i18next.config");
-const process = require("process");
 
 const config = {
 	i18n,
