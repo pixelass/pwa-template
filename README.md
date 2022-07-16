@@ -24,7 +24,7 @@ A template for Next.js with PWA support and i18n.
 - [Jest](https://jestjs.io/)
 - [Commitlint](https://commitlint.js.org/)
 - [Stylelint](https://stylelint.io/)
-- [XO](https://github.com/xojs/xo)
+- [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 
 Additional libraries:
@@ -49,12 +49,12 @@ yarn storybook
 ## Atomic design
 
 We use atomic design. You can read more about our decision in the
-[documentation](./docs/ATOMIC_DESIGN.md).
+[documentation](docs/ATOMIC_DESIGN.md).
 
 ## Behavior Driven Development
 
 We use behavior tests. You can read more about our decision in the
-[documentation](./docs/BEHAVIOR_DRIVEN_DEVELOPMENT.md).
+[documentation](docs/BEHAVIOR_DRIVEN_DEVELOPMENT.md).
 
 ## Test Driven Development
 
@@ -64,7 +64,7 @@ and [testing-library](https://testing-library.com/docs/react-testing-library/int
 ## Commitlint
 
 We use commitlint to ensure conventional commit messages. You can read more about our decision in
-the [documentation](./docs/COMMITS.md).
+the [documentation](docs/COMMITS.md).
 
 ## Commands
 
@@ -120,10 +120,10 @@ yarn test
 yarn stylelint
 ```
 
-**Run xo**
+**Run eslint**
 
 ```shell
-yarn xo
+yarn eslint
 ```
 
 **Run all linters**
