@@ -97,7 +97,11 @@ To ensure that tested elements can be selected we add
 [`data-attributes`](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes)
 to our target elements.
 
-| Usage  | Pattern           | example                     | description                  |
-| ------ | ----------------- | --------------------------- | ---------------------------- |
-| ID     | `data-test-id`    | `data-test-id="my-element"` | Find element in the DOM      |
+| Usage | Pattern        | example                     | description             |
+| ----- | -------------- | --------------------------- | ----------------------- |
+| ID    | `data-test-id` | `data-test-id="my-element"` | Find element in the DOM |
 
+## Resources:
+
+- User stories and BDD: https://cucumber.io/blog/bdd/user-stories-are-not-the-same-as-features/
+- Gherkin reference: https://cucumber.io/docs/gherkin/reference/
