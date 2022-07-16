@@ -15,7 +15,7 @@
     "eslint:fix": "yarn eslint --fix",
     "jest": "jest",
     "jest:watch": "jest --watch",
-    "lint": "yarn tsc:noEmit && yarn xo && yarn stylelint && next lint",
+    "lint": "yarn tsc:noEmit && yarn eslint && yarn stylelint && next lint",
     "ncu": "yarn dlx npm-check-updates@11 -u --dep='prod,dev'",
     "ncu:minor": "yarn ncu -t minor",
     "ncu:patch": "yarn ncu -t patch",
