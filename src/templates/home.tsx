@@ -1,7 +1,6 @@
 import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import { useTranslation } from "next-i18next";
-import React from "react";
 
 import { useStore } from "@/ions/store";
 import Card from "@/organisms/card";

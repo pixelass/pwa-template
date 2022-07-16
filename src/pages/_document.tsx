@@ -7,7 +7,7 @@ import NextDocument, {
 	Main,
 	NextScript,
 } from "next/document";
-import React, { Children } from "react";
+import { Children } from "react";
 
 import { cache } from "@/ions/configs/emotion";
 import pkg from "~package.json";
