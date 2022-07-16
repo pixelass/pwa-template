@@ -1,16 +1,15 @@
 /**
  * @jest-environment jsdom
  */
-// eslint-disable-next-line import/no-unassigned-import
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 import Card from ".";
 
 describe("Card component", () => {
 	it("should render children", () => {
-		const text = "Hello World";
+		const text = "Card component";
 		render(<Card>{text}</Card>);
-		expect(screen.getByText(text)).toBeInTheDocument();
+		expect(screen.getByText(text)).toBeVisible();
 	});
 });

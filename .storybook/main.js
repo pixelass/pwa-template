@@ -1,10 +1,19 @@
 const path = require("path");
+
 const toPath = path_ => path.join(process.cwd(), path_);
 
 module.exports = {
 	stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-	addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+	addons: [
+		"@storybook/addon-links",
+		"@storybook/addon-essentials",
+		"@storybook/addon-interactions",
+	],
 	framework: "@storybook/react",
+	typescript: { reactDocgen: true },
+	core: {
+		builder: "webpack5",
+	},
 	webpackFinal: async config => {
 		config.module.rules.push({
 			test: /\.(ts|tsx)$/,
@@ -12,20 +21,15 @@ module.exports = {
 				{
 					loader: require.resolve("babel-loader"),
 					options: {
-						presets: [
-							"@babel/preset-env",
-							"@babel/preset-typescript",
-							"@babel/preset-react",
-						],
+						presets: ["next/babel"],
 						plugins: [
-							"@babel/plugin-transform-runtime",
 							[
 								"@emotion/babel-plugin",
 								{
 									sourceMap: true,
 									autoLabel: "dev-only",
 									labelFormat: "[local]",
-									cssPropOptimization: true,
+									cssPropOptimization: false,
 								},
 							],
 						],

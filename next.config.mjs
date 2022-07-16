@@ -2,10 +2,10 @@
 import process from "node:process";
 
 import withPWA from "next-pwa";
-import runtimeCaching from "next-pwa/cache";
+import runtimeCaching from "next-pwa/cache.js";
 import transpileModules from "next-transpile-modules";
 
-import { i18n } from "./next-i18next.config";
+import i18next from "./next-i18next.config.js";
 
 const withTM = transpileModules(["@mui/material"]); // Pass the modules you would like to see transpiled
 
@@ -14,7 +14,7 @@ const withTM = transpileModules(["@mui/material"]); // Pass the modules you woul
  * @type {import('next').NextConfig} config
  */
 const config = {
-	i18n,
+	i18n: i18next.i18n,
 	reactStrictMode: true,
 	pwa: {
 		disable: process.env.NODE_ENV === "development",

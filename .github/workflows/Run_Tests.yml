@@ -34,14 +34,5 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-      - name: Install dependencies
-        run: yarn
-
-      - name: Lint all files
-        run: yarn lint
-
-      - name: Build before e2e tests
-        run: yarn build:test
-
-      - name: Run all tests
-        run: yarn test
+      - run: yarn
+      - run: yarn test:jest

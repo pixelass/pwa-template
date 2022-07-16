@@ -1,8 +1,14 @@
 import Card from ".";
 
-export function Default() {
-	return <Card>Hello Card</Card>;
+function Template({ children }) {
+	return <Card>{children}</Card>;
 }
+
+export const Default = Template.bind({});
+
+Default.args = {
+	children: "Hello Card",
+};
 
 const story = {
 	title: "Card",
