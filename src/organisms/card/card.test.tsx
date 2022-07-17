@@ -10,6 +10,6 @@ describe("Card component", () => {
 	it("should render children", () => {
 		const text = "Card component";
 		render(<Card>{text}</Card>);
-		expect(screen.getByText(text)).toBeVisible();
+		expect(screen.getByText(text)).toBeInTheDocument();
 	});
 });
