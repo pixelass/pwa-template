@@ -6,7 +6,7 @@
     "isolatedModules": true,
     "target": "es5",
     "lib": ["es2020", "dom"],
-    "types": ["cypress", "@types/node"]
+    "types": ["cypress", "node"]
   },
   "include": ["**/*.ts"]
 }

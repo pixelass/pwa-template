@@ -23,9 +23,10 @@
       "@/*": ["src/*"],
       "~*": ["*"]
     },
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "typeRoots": ["./node_modules/@types"],
     "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "types/emotion.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "cypress", "cypress.config.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

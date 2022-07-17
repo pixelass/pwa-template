@@ -71,9 +71,9 @@
       }
     },
     {
-      "files": "types.ts",
+      "files": "*.{test,spec}.ts",
       "rules": {
-        "no-unused-vars": "off"
+        "import/no-unassigned-import": "off"
       }
     },
     {
