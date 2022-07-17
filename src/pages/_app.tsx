@@ -1,8 +1,6 @@
-import {
-	CacheProvider as EmotionCacheProvider,
-	ThemeProvider as EmotionThemeProvider,
-} from "@emotion/react";
+import { CacheProvider as EmotionCacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { appWithTranslation } from "next-i18next";
 import Head from "next/head";
 import React, { useMemo } from "react";
@@ -44,10 +42,10 @@ function App({ Component, pageProps }) {
 				<meta name="theme-color" content={theme.palette.primary.main} />
 			</Head>
 			<EmotionCacheProvider value={cache}>
-				<EmotionThemeProvider theme={theme}>
+				<MuiThemeProvider theme={theme}>
 					<CssBaseline />
 					<Component {...pageProps} />
-				</EmotionThemeProvider>
+				</MuiThemeProvider>
 			</EmotionCacheProvider>
 		</>
 	);
