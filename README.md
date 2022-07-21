@@ -136,7 +136,7 @@ yarn storybook:build
 **Run cypress tests:**
 
 ```shell
-npm run cypress # local without server
+yarn cypress # local without server
 # yarn cypress:run # headless
 # yarn test:cypress # with server
 ```
