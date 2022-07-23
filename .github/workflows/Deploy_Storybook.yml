@@ -35,6 +35,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - run: yarn install
+      - run: yarn prebuild
       - run: yarn storybook:build
 
       - uses: peaceiris/actions-gh-pages@v3
