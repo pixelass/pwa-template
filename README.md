@@ -54,32 +54,45 @@ After the setup all setup related configuration and files can be removed automat
 
 ### Manual
 
-> :warning: Please remove `"type": "module"` from `package.json`.
-> next-i18next is not compatible with esm.
+> :warning: Warning
+>
+> Please remove `"type": "module"` from `package.json`.  
+> next-i18next [is not compatible with esm](https://github.com/i18next/next-i18next/issues/1505).
 
 <details>
 <summary>View the manual steps</summary>
 
-You can adjust the template by searching for `/pwa[ -]template/`. It should find all instances of
+You can adjust the template by searching for `/pwa[ -]template/i`. It should find all instances of
 "pwa-template" or "PWA Template". Additionally, you should adjust the colors in `public/manifest.json`.
 
 We also advise to remove all setup related configuration and files:
 
 - Remove `scripts.setup` in from `package.json`
+- Remove `scripts.prebuild` in from `package.json`
+- Change `scripts.build` in `package.json` to "next build"
+- Change `scripts["storybook:build]` in `package.json` to "storybook-build"
 - Remove `devDependencies.boxen` in from `package.json`
 - Remove `devDependencies.chalk` in from `package.json`
 - Remove `devDependencies.fullname` in from `package.json`
 - Remove `devDependencies.inquirer` in from `package.json`
 - Remove `devDependencies.ora` in from `package.json`
+- Remove `run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
+- Remove `run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
+- Remove `run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
 - Delete the directory `scripts`.
 
 Here's a list of all files that should be adjusted:
 
-- pkg: `package.json`
-- manifest: `public/manifest.json`
-- \_app: `src/pages/_app.tsx`
-- \_document:`/src/pages/_document.tsx`
-- emotion: `src/ions/configs/emotion.ts`
+- `.github/workflows/Code_Quality.yml`
+- `.github/workflows/Run_Tests.yml`
+- `.github/workflows/Run_Cypress.yml`
+- `package.json`
+- `public/manifest.json`
+- `src/pages/_app.tsx`
+- `/src/pages/_document.tsx`
+- `src/ions/configs/emotion.ts`
+- `scripts` (deleted)
+
 </details>
 
 ## Project Setup
@@ -114,7 +127,7 @@ It will output something like this:
 ```shell
 $ yarn dlx surge token
 
-   1234567890abcdefghijklmnopqrstuv
+    1234567890abcdefghijklmnopqrstuv
 ```
 
 Add this token to your [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
@@ -134,7 +147,7 @@ yarn run dev
 **Run storybook:**
 
 ```shell
-yarn run  storybook
+yarn run storybook
 ```
 
 ## Atomic design
@@ -180,7 +193,7 @@ yarn run storybook
 **Build storybook:**
 
 ```shell
-yarnrun  storybook:build
+yarn run storybook:build
 ```
 
 **Run cypress tests:**
@@ -227,7 +240,9 @@ yarn run lint
 
 If you need to skip a linter you can add the `--no-verify` flag.
 
-> :warning: We strongly advise against skipping linters.
+> :warning: Warning
+>
+> We strongly advise against skipping linters.
 
 ```shell
 # Skipping pre-commit hooks

@@ -1,4 +1,4 @@
-import { readFile, rmdir, writeFile } from "node:fs/promises";
+import { readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import boxen from "boxen";
@@ -6,8 +6,9 @@ import chalk from "chalk";
 import fullName from "fullname";
 import inquirer from "inquirer";
 import ora from "ora";
+import YAML from "yaml";
 
-import { __dirname, files } from "./shared.js";
+import { __dirname, files, workflows } from "./shared.js";
 
 const questions = [
 	{
@@ -70,7 +71,12 @@ const questions = [
 		},
 	},
 ];
+
 const spinner = ora("Setup");
+
+// Flag is only used for development
+const write = true;
+
 inquirer
 	.prompt(questions)
 	.then(
@@ -88,13 +94,35 @@ inquirer
 				spinner.start();
 				const pkg = JSON.parse(await readFile(files.pkg));
 				const manifest = JSON.parse(await readFile(files.manifest));
+				const runCypress = YAML.parse(await readFile(workflows.runCypress, "utf-8"));
+				const runTests = YAML.parse(await readFile(workflows.runTests, "utf-8"));
+				const codeQuality = YAML.parse(await readFile(workflows.codeQuality, "utf-8"));
 				let _app = await readFile(files._app, "utf-8");
 				let _document = await readFile(files._document, "utf-8");
 				let emotion = await readFile(files.emotion, "utf-8");
+
+				const runCypressPreIndex = runCypress.jobs.test.steps.findIndex(
+					({ run }) => run === "yarn run prebuild"
+				);
+				runCypress.jobs.test.steps.splice(runCypressPreIndex, 1);
+
+				const runTestsPreIndex = runTests.jobs.test.steps.findIndex(
+					({ run }) => run === "yarn run prebuild"
+				);
+				runTests.jobs.test.steps.splice(runTestsPreIndex, 1);
+
+				const codeQualityPreIndex = codeQuality.jobs.test.steps.findIndex(
+					({ run }) => run === "yarn run prebuild"
+				);
+				codeQuality.jobs.test.steps.splice(codeQualityPreIndex, 1);
+
 				spinner.text = "Modifying files…";
 				// Adjust package.json
 				pkg.name = projectName;
 				pkg.author = author;
+				pkg.build = "next build";
+				pkg["storybook:build"] = "storybook-build";
+				delete pkg.scripts.prebuild;
 				delete pkg.type;
 				// Adjust public/manifest.json
 				manifest.name = pwaName;
@@ -118,11 +146,16 @@ inquirer
 						`<meta name="application-name" content="pwa-template" />`,
 						`<meta name="application-name" content="${pwaName.trim()}" />`
 					);
-				await writeFile(files.pkg, JSON.stringify(pkg, null, 2));
-				await writeFile(files.manifest, JSON.stringify(manifest, null, 2));
-				await writeFile(files.emotion, emotion);
-				await writeFile(files._app, _app);
-				await writeFile(files._document, _document);
+				if (write) {
+					await writeFile(files.manifest, JSON.stringify(manifest, null, 2));
+					await writeFile(files.pkg, JSON.stringify(pkg, null, 2));
+					await writeFile(files.emotion, emotion);
+					await writeFile(files._app, _app);
+					await writeFile(files._document, _document);
+					await writeFile(workflows.runCypress, YAML.stringify(runCypress, null, 2));
+					await writeFile(workflows.runTests, YAML.stringify(runTests, null, 2));
+					await writeFile(workflows.codeQuality, YAML.stringify(codeQuality, null, 2));
+				}
 				spinner.succeed("The project setup is done.");
 				const { cleanup } = await inquirer.prompt([
 					{
@@ -141,9 +174,10 @@ inquirer
 					delete pkg.devDependencies.fullname;
 					delete pkg.devDependencies.inquirer;
 					delete pkg.devDependencies.ora;
-					await writeFile(files.pkg, JSON.stringify(pkg, null, 2));
-					await rmdir(path.join(__dirname, "setup"), { recursive: true });
-					console.log("\n");
+					if (write) {
+						await writeFile(files.pkg, JSON.stringify(pkg, null, 2));
+						await rm(path.join(__dirname), { recursive: true });
+					}
 					console.log(
 						boxen(
 							[

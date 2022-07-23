@@ -6,6 +6,9 @@
   "license": "MIT",
   "main": "n.a.",
   "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
     "prebuild": "node scripts/prepare.js",
     "build": "yarn prebuild && next build",
@@ -27,7 +30,7 @@
     "spj": "yarn dlx sort-package-json@1 package.json",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook",
+    "storybook:build": "yarn prebuild && build-storybook",
     "stylelint": "stylelint '{**/*,*}.{ts,tsx}'",
     "test:cypress": "yarn dlx start-server-and-test@1 start http://localhost:3000 cypress:run",
     "test:jest": "yarn jest",
@@ -122,7 +125,8 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "type-fest": "^2.17.0",
     "typescript": "^4.7.4",
-    "webpack": "^5.73.0"
+    "webpack": "^5.73.0",
+    "yaml": "^2.1.1"
   },
   "packageManager": "yarn@3.2.0"
 }

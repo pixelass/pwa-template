@@ -35,5 +35,5 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - run: yarn install
-      - run: yarn prebuild
-      - run: yarn test:jest
+      - run: yarn run prebuild
+      - run: yarn run test:jest

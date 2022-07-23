@@ -30,8 +30,7 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-      - run: yarn install
-      - run: yarn prebuild
+      - run: yarn run prebuild
 
       - uses: cypress-io/github-action@v4
         env:
