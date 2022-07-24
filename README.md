@@ -52,46 +52,35 @@ yarn run setup
 A prompt will guide you through the setup and adjust all files accordingly.  
 After the setup all setup related configuration and files can be removed automatically.
 
-<img src="./docs/resources/setup.svg" alt="Setup prompt" width="600"/>
-
 ### Manual
 
 > :warning: Warning
 >
-> Please remove `"type": "module"` from `package.json`.  
-> next-i18next [is not compatible with esm](https://github.com/i18next/next-i18next/issues/1505).
+> We suggest using the automatic setup instead.
 
 <details>
 <summary>View the manual steps</summary>
 
 You can adjust the template by searching for `/pwa[ -]template/i`. It should find all instances of
-"pwa-template" or "PWA Template". Additionally, you should adjust the colors in
-`public/manifest.json`.
+"pwa-template" or "PWA Template". Additionally, you should adjust the colors (`theme_color` and
+`background_color`) in `public/manifest.json`.
 
-We also advise to remove all setup related configuration and files:
+**We also advise to remove all setup related configuration and files:**
 
 - Remove `scripts.setup` in from `package.json`
-- Remove `scripts.prebuild` in from `package.json`
-- Change `scripts.build` in `package.json` to "next build"
-- Change `scripts["storybook:build]` in `package.json` to "storybook-build"
 - Remove `devDependencies.boxen` in from `package.json`
 - Remove `devDependencies.chalk` in from `package.json`
 - Remove `devDependencies.fullname` in from `package.json`
 - Remove `devDependencies.inquirer` in from `package.json`
 - Remove `devDependencies.ora` in from `package.json`
-- Remove `- run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
-- Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
-- Adjust `- if: …` in from `.github/workflows/Run_Cypress.yml` to end with
+- Remove `devDependencies.yaml` in from `package.json`
+- Adjust `- if: …` in `.github/workflows/Run_Cypress.yml` to end with
   `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}`
   is the name of the Vercel project.
-- Remove `- run: yarn install` in from `.github/workflows/Run_Cypress.yml`
-- Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
 - Delete the directory `scripts`.
 
-Here's a list of all files that should be adjusted:
+**Here's a list of all files that should be adjusted:**
 
-- `.github/workflows/Code_Quality.yml`
-- `.github/workflows/Run_Tests.yml`
 - `.github/workflows/Run_Cypress.yml`
 - `package.json`
 - `public/manifest.json`

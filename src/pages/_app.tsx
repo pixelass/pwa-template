@@ -36,7 +36,12 @@ function App({ Component, pageProps }) {
 			{fontFaces}
 			{globalStyles}
 			<Head>
-				<title key="title">pwa-template</title>
+				<title key="title">PWA Template</title>
+				<meta
+					key="description"
+					name="description"
+					content="PWA template with Next.js and MUI"
+				/>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="msapplication-TileColor" content={theme.palette.primary.main} />
 				<meta name="theme-color" content={theme.palette.primary.main} />
