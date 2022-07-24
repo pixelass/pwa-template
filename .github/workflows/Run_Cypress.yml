@@ -4,10 +4,19 @@ on: [deployment_status]
 
 jobs:
   test:
-    if: github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.state == 'success' github.event.deployment_status.environment == 'Preview'
     name: Run Cypress
     runs-on: ubuntu-20.04
     steps:
+      - name: --- State -------------------------
+        run: echo ${{github.event.deployment_status.state}}
+      - name: --- Environment -------------------
+        run: echo ${{github.event.deployment_status.environment}}
+      - name: --- Environment URL ---------------
+        run: echo ${{github.event.deployment_status.environment_url}}
+      - name: --- Target URL --------------------
+        run: echo ${{github.event.deployment_status.target_url}}
+
       - uses: actions/checkout@v3
 
       - uses: n1hility/cancel-previous-runs@v2
