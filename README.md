@@ -52,6 +52,8 @@ yarn run setup
 A prompt will guide you through the setup and adjust all files accordingly.  
 After the setup all setup related configuration and files can be removed automatically.
 
+<img src="./docs/resources/setup.svg" alt="Setup prompt" width="600"/>
+
 ### Manual
 
 > :warning: Warning
@@ -80,8 +82,8 @@ We also advise to remove all setup related configuration and files:
 - Remove `- run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
 - Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
 - Adjust `- if: …` in from `.github/workflows/Run_Cypress.yml` to end with
-  `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}` is
-  the name of the Vercel project.
+  `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}`
+  is the name of the Vercel project.
 - Remove `- run: yarn install` in from `.github/workflows/Run_Cypress.yml`
 - Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
 - Delete the directory `scripts`.
@@ -153,8 +155,8 @@ We use behavior tests. You can read more about our decision in the
 
 ## Test Driven Development
 
-We use jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/)
-and [testing-library](https://testing-library.com/docs/react-testing-library/intro/).
+We use jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/) and
+[testing-library](https://testing-library.com/docs/react-testing-library/intro/).
 
 ## Commitlint
 
