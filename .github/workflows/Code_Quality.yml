@@ -34,4 +34,5 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - run: yarn install
-      - run: yarn lint
+      - run: yarn run prebuild
+      - run: yarn run lint

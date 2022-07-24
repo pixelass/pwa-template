@@ -41,5 +41,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build: |
             yarn install
-            yarn storybook:build
+            yarn run storybook:build
           dist: ./storybook-static

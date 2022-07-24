@@ -34,5 +34,6 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-      - run: yarn
-      - run: yarn test:jest
+      - run: yarn install
+      - run: yarn run prebuild
+      - run: yarn run test:jest
