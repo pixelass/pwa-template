@@ -7,6 +7,9 @@ A template for Next.js with PWA support and i18n.
 <!-- toc -->
 
 - [Libraries](#libraries)
+- [Personalize this template](#personalize-this-template)
+  - [Automatic (recommended)](#automatic-recommended)
+  - [Manual](#manual)
 - [Project Setup](#project-setup)
   - [Set up Vercel](#set-up-vercel)
   - [Setup GitHub Pages](#setup-github-pages)
@@ -36,55 +39,106 @@ Additional libraries:
 - [MUI](https://mui.com/)
 - [i18next](https://www.i18next.com/) ([next-i18next](https://github.com/isaachinman/next-i18next))
 
+## Personalize this template
+
+### Automatic (recommended)
+
+You can use the `setup` script by running:
+
+```shell
+yarn run setup
+```
+
+A prompt will guide you through the setup and adjust all files accordingly.  
+After the setup all setup related configuration and files can be removed automatically.
+
+### Manual
+
+> :warning: Warning
+>
+> Please remove `"type": "module"` from `package.json`.  
+> next-i18next [is not compatible with esm](https://github.com/i18next/next-i18next/issues/1505).
+
+<details>
+<summary>View the manual steps</summary>
+
+You can adjust the template by searching for `/pwa[ -]template/i`. It should find all instances of
+"pwa-template" or "PWA Template". Additionally, you should adjust the colors in
+`public/manifest.json`.
+
+We also advise to remove all setup related configuration and files:
+
+- Remove `scripts.setup` in from `package.json`
+- Remove `scripts.prebuild` in from `package.json`
+- Change `scripts.build` in `package.json` to "next build"
+- Change `scripts["storybook:build]` in `package.json` to "storybook-build"
+- Remove `devDependencies.boxen` in from `package.json`
+- Remove `devDependencies.chalk` in from `package.json`
+- Remove `devDependencies.fullname` in from `package.json`
+- Remove `devDependencies.inquirer` in from `package.json`
+- Remove `devDependencies.ora` in from `package.json`
+- Remove `- run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
+- Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
+- Adjust `- if: …` in from `.github/workflows/Run_Cypress.yml` to end with
+  `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}` is
+  the name of the Vercel project.
+- Remove `- run: yarn install` in from `.github/workflows/Run_Cypress.yml`
+- Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
+- Delete the directory `scripts`.
+
+Here's a list of all files that should be adjusted:
+
+- `.github/workflows/Code_Quality.yml`
+- `.github/workflows/Run_Tests.yml`
+- `.github/workflows/Run_Cypress.yml`
+- `package.json`
+- `public/manifest.json`
+- `src/pages/_app.tsx`
+- `/src/pages/_document.tsx`
+- `src/ions/configs/emotion.ts`
+- `scripts` (deleted)
+
+</details>
+
 ## Project Setup
 
-This project uses different deployments to make code reviews easier:
+This project uses multiple Vercel deployments to make design/code reviews easier:
 
-- Vercel (App Production)
-- Vercel (App Preview)
-- GitHub Pages (Storybook Production)
-- Surge (Storybook Preview)
+- App Production
+- App Preview
+- Storybook Production
+- Storybook Preview
 
 ### Set up Vercel
 
 Please follow this guide: https://vercel.com/docs/concepts/git
 
-### Setup GitHub Pages
+#### App
 
-Please follow this guide: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+1. The "Project Name" should match what you entered when you
+   [personalized this template](#personalize-this-template).
+2. Follow the default setup for Next.js.
 
-Use the `gh-pages` branch
+#### Storybook
 
-### Setup Surge
+1. Adjust the "Build and Output Settings"
+   - BUILD COMMAND: `yarn run storybook:build`
+   - OUTPUT DIRECTORY: `./storybook-static`
 
-To generate a surge token please use the following command
-
-```shell
-npx surge token
-```
-
-It will output something like this:
-
-```shell
-$ npx surge token
-
-   1234567890abcdefghijklmnopqrstuv
-```
-
-Add this token to your [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+<img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/>
 
 ## Getting started
 
 **Run the development server:**
 
-```bash
-yarn dev
+```shell
+yarn run dev
 ```
 
 **Run storybook:**
 
 ```shell
-yarn storybook
+yarn run storybook
 ```
 
 ## Atomic design
@@ -111,32 +165,32 @@ the [documentation](docs/COMMITS.md).
 
 **Run the development server:**
 
-```bash
-yarn dev
+```shell
+yarn run dev
 ```
 
 **Build:**
 
 ```shell
-yarn build
+yarn run build
 ```
 
 **Run storybook:**
 
 ```shell
-yarn storybook
+yarn run storybook
 ```
 
 **Build storybook:**
 
 ```shell
-yarn storybook:build
+yarn run storybook:build
 ```
 
 **Run cypress tests:**
 
 ```shell
-yarn cypress # local without server
+yarn run cypress # local without server
 # yarn cypress:run # headless
 # yarn test:cypress # with server
 ```
@@ -144,7 +198,7 @@ yarn cypress # local without server
 **Run unit tests:**
 
 ```shell
-yarn jest
+yarn run jest
 # yarn jest:watch # watch
 # yarn test:jest # same as "yarn jest"
 ```
@@ -152,32 +206,34 @@ yarn jest
 **Run all tests:**
 
 ```shell
-yarn test
+yarn run test
 ```
 
 **Run stylelint**
 
 ```shell
-yarn stylelint
+yarn run stylelint
 ```
 
 **Run eslint**
 
 ```shell
-yarn eslint
+yarn run eslint
 ```
 
 **Run all linters**
 
 ```shell
-yarn lint
+yarn run lint
 ```
 
 ## Skipping linters
 
 If you need to skip a linter you can add the `--no-verify` flag.
 
-> Warning! We strongly advise against skipping linters.
+> :warning: Warning
+>
+> We strongly advise against skipping linters.
 
 ```shell
 # Skipping pre-commit hooks

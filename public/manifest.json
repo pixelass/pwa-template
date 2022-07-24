@@ -3,8 +3,8 @@
   "short_name": "pwa-template",
   "display": "standalone",
   "orientation": "landscape",
-  "theme_color": "#00695c",
-  "background_color": "#00695c",
+  "theme_color": "#9fa8da",
+  "background_color": "#121212",
   "start_url": "/",
   "icons": [
     {

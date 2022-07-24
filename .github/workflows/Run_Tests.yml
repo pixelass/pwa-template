@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Run Server and Test
+    name: Run Tests
     runs-on: ubuntu-20.04
 
     steps:
@@ -34,5 +34,6 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-      - run: yarn
-      - run: yarn test:jest
+      - run: yarn install
+      - run: yarn run prebuild
+      - run: yarn run test:jest
