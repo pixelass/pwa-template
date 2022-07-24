@@ -105,6 +105,10 @@ inquirer
 					({ run }) => run === "yarn run prebuild"
 				);
 				runCypress.jobs.test.steps.splice(runCypressPreIndex, 1);
+				const runCypressInstallIndex = runCypress.jobs.test.steps.findIndex(
+					({ run }) => run === "yarn install"
+				);
+				runCypress.jobs.test.steps.splice(runCypressInstallIndex, 1);
 
 				const runTestsPreIndex = runTests.jobs.test.steps.findIndex(
 					({ run }) => run === "yarn run prebuild"

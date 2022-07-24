@@ -76,9 +76,10 @@ We also advise to remove all setup related configuration and files:
 - Remove `devDependencies.fullname` in from `package.json`
 - Remove `devDependencies.inquirer` in from `package.json`
 - Remove `devDependencies.ora` in from `package.json`
-- Remove `run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
-- Remove `run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
-- Remove `run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
+- Remove `- run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
+- Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
+- Remove `- run: yarn install` in from `.github/workflows/Run_Cypress.yml`
+- Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
 - Delete the directory `scripts`.
 
 Here's a list of all files that should be adjusted:

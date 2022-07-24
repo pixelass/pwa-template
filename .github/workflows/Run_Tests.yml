@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Run Server and Test
+    name: Run Tests
     runs-on: ubuntu-20.04
 
     steps:
