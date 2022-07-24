@@ -63,7 +63,8 @@ After the setup all setup related configuration and files can be removed automat
 <summary>View the manual steps</summary>
 
 You can adjust the template by searching for `/pwa[ -]template/i`. It should find all instances of
-"pwa-template" or "PWA Template". Additionally, you should adjust the colors in `public/manifest.json`.
+"pwa-template" or "PWA Template". Additionally, you should adjust the colors in
+`public/manifest.json`.
 
 We also advise to remove all setup related configuration and files:
 
@@ -78,6 +79,9 @@ We also advise to remove all setup related configuration and files:
 - Remove `devDependencies.ora` in from `package.json`
 - Remove `- run: yarn run prebuild` in from `.github/workflows/Code_Quality.yml`
 - Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Tests.yml`
+- Adjust `- if: …` in from `.github/workflows/Run_Cypress.yml` to end with
+  `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}` is
+  the name of the Vercel project.
 - Remove `- run: yarn install` in from `.github/workflows/Run_Cypress.yml`
 - Remove `- run: yarn run prebuild` in from `.github/workflows/Run_Cypress.yml`
 - Delete the directory `scripts`.
@@ -98,44 +102,30 @@ Here's a list of all files that should be adjusted:
 
 ## Project Setup
 
-This project uses different deployments to make code reviews easier:
+This project uses multiple Vercel deployments to make design/code reviews easier:
 
-- Vercel (App Production)
-- Vercel (App Preview)
-- GitHub Pages (Storybook Production)
-- Surge (Storybook Preview)
+- App Production
+- App Preview
+- Storybook Production
+- Storybook Preview
 
 ### Set up Vercel
 
 Please follow this guide: https://vercel.com/docs/concepts/git
 
-### Setup GitHub Pages
+#### App
 
-Please follow this guide: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+1. The "Project Name" should match what you entered when you
+   [personalized this template](#personalize-this-template).
+2. Follow the default setup for Next.js.
 
-Use the `gh-pages` branch
+#### Storybook
 
-### Setup Surge
+1. Adjust the "Build and Output Settings"
+   - BUILD COMMAND: `yarn run storybook:build`
+   - OUTPUT DIRECTORY: `./storybook-static`
 
-To generate a surge token please use the following command
-
-```shell
-yarn dlx surge token
-```
-
-It will output something like this:
-
-```shell
-$ yarn dlx surge token
-
-    1234567890abcdefghijklmnopqrstuv
-```
-
-Add this token to your [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-
-```shell
-SURGE_TOKEN=1234567890abcdefghijklmnopqrstuv
-```
+<img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/>
 
 ## Getting started
 

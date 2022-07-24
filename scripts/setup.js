@@ -109,7 +109,7 @@ inquirer
 					({ run }) => run === "yarn install"
 				);
 				runCypress.jobs.test.steps.splice(runCypressInstallIndex, 1);
-
+				runCypress.jobs.test.if = `github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview – ${projectName}'`;
 				const runTestsPreIndex = runTests.jobs.test.steps.findIndex(
 					({ run }) => run === "yarn run prebuild"
 				);
