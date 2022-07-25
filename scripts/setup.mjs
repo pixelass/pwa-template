@@ -115,7 +115,7 @@ async function setup(write = true) {
 			{
 				type: "input",
 				name: "pwaShortName",
-				message: " PWA short name",
+				message: "PWA short name",
 				default() {
 					return manifest.short_name;
 				},
