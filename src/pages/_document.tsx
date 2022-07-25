@@ -66,7 +66,6 @@ class Document extends NextDocument {
 				<Head>
 					<meta charSet="utf8" />
 					<meta name="version" content={pkg.version} />
-					<meta name="robots" content="noindex,nofollow" />
 					<meta name="application-name" content="pwa-template" />
 					<meta name="apple-mobile-web-app-title" content="pwa-template" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />
