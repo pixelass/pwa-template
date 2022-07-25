@@ -122,7 +122,7 @@ Please follow this guide: https://vercel.com/docs/concepts/git
    - BUILD COMMAND: `yarn run storybook:build`
    - OUTPUT DIRECTORY: `./storybook-static`
 
-<img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/>
+<p align="center"><img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/></p>
 
 ## Getting started
 
