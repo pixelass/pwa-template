@@ -4,6 +4,10 @@ A template for Next.js with PWA support and i18n.
 
 <img src="./docs/resources/next-logo.png" alt="next logo" width="50%"/><img src="./docs/resources/pwa-logo.png" alt="pwa logo" width="50%"/>
 
+<h2 align="center">100% Lighthouse score</h2>
+
+<p align="center"><img src="./docs/resources/lighthouse.png" alt="next logo" width="600"/></p>
+
 <!-- toc -->
 
 - [Libraries](#libraries)
@@ -51,6 +55,8 @@ yarn run setup
 
 A prompt will guide you through the setup and adjust all files accordingly.  
 After the setup all setup related configuration and files can be removed automatically.
+
+<p align="center"><img src="./docs/resources/setup.svg" alt="next logo" width="600"/></p>
 
 ### Manual
 
