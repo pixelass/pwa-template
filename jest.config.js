@@ -5,6 +5,6 @@ module.exports = {
 	resolver: `${__dirname}/jest-resolver.js`,
 	moduleNameMapper: {
 		"^@/(.*)": "<rootDir>/src/$1",
-		"^~(.*)": "<rootDir>/$1",
+		"^package.json": "<rootDir>/package.json",
 	},
 };

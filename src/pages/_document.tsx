@@ -10,7 +10,7 @@ import NextDocument, {
 import { Children } from "react";
 
 import { cache } from "@/ions/configs/emotion";
-import pkg from "~package.json";
+import pkg from "package.json";
 
 const { extractCritical } = createEmotionServer(cache);
 
