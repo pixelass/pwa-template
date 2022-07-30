@@ -21,7 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "~*": ["*"]
+      "package.json": ["package.json"]
     },
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "typeRoots": ["./node_modules/@types"],
