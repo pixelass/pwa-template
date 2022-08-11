@@ -18,17 +18,22 @@ So that I can access my account
 
 As a Developer
 I want a testing setup
-So that I can run tests
+So that I can run automated tests
 
+-->
+
+<!--
+**************
+*  By users  *
+**************
 -->
 
 ## User Story
 
-<!-- Filled in by users -->
 <!-- See: https://cucumber.io/blog/bdd/user-stories-are-not-the-same-as-features/ -->
 
 ```gherkin
-As a <persona>
+As a <user>
 I want <feature>
 So that <benefit>
 ```
@@ -39,16 +44,30 @@ So that <benefit>
 *********************************************************************************
 -->
 
+<!--
+******************
+*  By designers  *
+******************
+-->
+<!--
 ## Wireframe / Design
+-->
 
-<!-- Filled in by designers -->
-
+<!--
+***********************
+*  By product owners  *
+***********************
+-->
+<!-- See: https://cucumber.io/docs/gherkin/reference/ -->
+<!--
 ## Acceptance Criteria
 
-<!-- Filled in by product owners -->
-<!-- See: https://cucumber.io/docs/gherkin/reference/ -->
-
 ```gherkin
+feature: <feature>
+  As a <persona>
+  I want <feature>
+  So that <benefit>
+
   Scenario: <scenario>
 
     Background
@@ -58,10 +77,15 @@ So that <benefit>
     When <action>
     Then <result>
 ```
+-->
 
+<!--
+*******************
+*  By developers  *
+*******************
+-->
+<!--
 ## Tasks
 
-<!-- Filled in by developers if the story has subtasks -->
-<!--
 - [ ] …
 -->
