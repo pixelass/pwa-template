@@ -2590,9 +2590,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/webpack-dev-server@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cypress/webpack-dev-server@npm:2.0.0"
+"@cypress/webpack-dev-server@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@cypress/webpack-dev-server@npm:2.1.0"
   dependencies:
     find-up: 6.3.0
     fs-extra: 9.1.0
@@ -2603,13 +2603,13 @@ __metadata:
     tslib: ^2.3.1
     webpack-dev-server: ^4.7.4
     webpack-merge: ^5.4.0
-  checksum: 5516301c83c34c1f1f2e754260ae1537ccfa848c96a4ed0c9b000a482f571347538adcb87b523033fe349e128fe24a070f08814b6c68203c6a9da520560cfe96
+  checksum: fb1e4941c9ca074fc2e4e512b87e129d3db2fac5a858959de1a1a0ea7571f44f0e9c7eb2820007c69d3411ca568f40171353ab5d96e0168324b9eac902650e16
   languageName: node
   linkType: hard
 
-"@cypress/webpack-preprocessor@npm:^5.12.0":
-  version: 5.12.0
-  resolution: "@cypress/webpack-preprocessor@npm:5.12.0"
+"@cypress/webpack-preprocessor@npm:^5.12.1":
+  version: 5.12.1
+  resolution: "@cypress/webpack-preprocessor@npm:5.12.1"
   dependencies:
     bluebird: 3.7.1
     debug: ^4.3.2
@@ -2619,7 +2619,7 @@ __metadata:
     "@babel/preset-env": ^7.0.0
     babel-loader: ^8.0.2
     webpack: ^4 || ^5
-  checksum: 3fa209655412369eb5bf0e8e0eaf25c89f0dfc6937d9aa4c51aa351449cf3d56b1834908dc81e507eb3d6508fee8534769b576f46f26034220a9f3f82ed7b3f8
+  checksum: 10d9801d7c3bc16556de7ff5995b9dcc96928595af70416a3a657d2e712970adec62938cb7d2573ced5fb4bba6544bc2a16ca35e7ea377b9871c7c63128fa3e1
   languageName: node
   linkType: hard
 
@@ -5418,12 +5418,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^14.4.2":
-  version: 14.4.2
-  resolution: "@testing-library/user-event@npm:14.4.2"
+"@testing-library/user-event@npm:^14.4.3":
+  version: 14.4.3
+  resolution: "@testing-library/user-event@npm:14.4.3"
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
-  checksum: 66364f2c503ddc01f5fdf98507aecf40b4edf0b9c140332aaf0161b1d7d52dea8a5d93baee927ae955bd7d6d58be0c12367a2cff924bdb4232746f0e614f9e03
+  checksum: 852c48ea6db1c9471b18276617c84fec4320771e466cd58339a732ca3fd73ad35e5a43ae14f51af51a8d0a150dcf60fcaab049ef367871207bea8f92c4b8195e
   languageName: node
   linkType: hard
 
@@ -18566,8 +18566,8 @@ __metadata:
     "@commitlint/cli": ^17.0.3
     "@commitlint/config-conventional": ^17.0.3
     "@cypress/browserify-preprocessor": ^3.0.2
-    "@cypress/webpack-dev-server": ^2.0.0
-    "@cypress/webpack-preprocessor": ^5.12.0
+    "@cypress/webpack-dev-server": ^2.1.0
+    "@cypress/webpack-preprocessor": ^5.12.1
     "@emotion/babel-plugin": ^11.10.0
     "@emotion/cache": 11.10.1
     "@emotion/react": 11.10.0
@@ -18588,7 +18588,7 @@ __metadata:
     "@storybook/testing-library": ^0.0.13
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
-    "@testing-library/user-event": ^14.4.2
+    "@testing-library/user-event": ^14.4.3
     "@types/node": ^16.11.45
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
