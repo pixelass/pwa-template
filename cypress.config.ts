@@ -38,6 +38,7 @@ async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginC
 			},
 		})
 	);
+	return config;
 }
 
 export default defineConfig({
