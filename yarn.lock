@@ -11436,7 +11436,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.23.0":
+"eslint@npm:^8.22.0":
   version: 8.23.0
   resolution: "eslint@npm:8.23.0"
   dependencies:
@@ -18755,7 +18755,7 @@ __metadata:
     boxen: ^7.0.0
     chalk: ^5.0.1
     cypress: ^10.7.0
-    eslint: ^8.23.0
+    eslint: ^8.22.0
     eslint-config-next: ^12.2.5
     eslint-config-prettier: ^8.5.0
     eslint-config-typescript: ^3.0.0
