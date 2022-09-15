@@ -4,6 +4,7 @@ import process from "node:process";
 import nextPWA from "next-pwa";
 import runtimeCaching from "next-pwa/cache.js";
 import transpileModules from "next-transpile-modules";
+
 import i18next from "./next-i18next.config.js";
 
 const withTM = transpileModules(["@mui/material"]); // Pass the modules you would like to see transpiled
@@ -22,6 +23,7 @@ const withPWA = nextPWA({
 const config = {
 	i18n: i18next.i18n,
 	reactStrictMode: true,
+	swcMinify: true,
 };
 
 export default withTM(withPWA(config));
