@@ -8,6 +8,8 @@ module.exports = {
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
 		"@storybook/addon-interactions",
+		"storybook-addon-next-router",
+		"storybook-react-i18next",
 	],
 	framework: "@storybook/react",
 	typescript: { reactDocgen: true },
@@ -15,6 +17,17 @@ module.exports = {
 		builder: "webpack5",
 	},
 	webpackFinal: async config => {
+		config.resolve.alias = {
+			...config.resolve.alias,
+			fs: path.resolve(__dirname, "fs.js"),
+		};
+		config.resolve.fallback = {
+			fs: false,
+			tls: false,
+			net: false,
+			module: false,
+			path: require.resolve("path-browserify"),
+		};
 		config.module.rules.push({
 			test: /\.(ts|tsx)$/,
 			use: [

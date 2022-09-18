@@ -5,12 +5,14 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { nanoid } from "nanoid";
 
-import Card from ".";
+import "@/mocks/jest";
 
-describe("Card component", () => {
+import Layout from ".";
+
+describe("Layout component", () => {
 	it("should render children", () => {
 		const text = nanoid();
-		render(<Card>{text}</Card>);
+		render(<Layout>{text}</Layout>);
 		expect(screen.getByText(text)).toBeInTheDocument();
 	});
 });

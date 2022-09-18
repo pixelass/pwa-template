@@ -24,23 +24,3 @@ export const light = createTheme({
 	},
 	typography,
 });
-
-export const darkHighContrast = createTheme({
-	palette: {
-		mode: "dark",
-		primary: {
-			main: "#00aaff",
-		},
-	},
-	typography,
-});
-
-export const lightHighContrast = createTheme({
-	palette: {
-		mode: "light",
-		primary: {
-			main: "#ffaa00",
-		},
-	},
-	typography,
-});

@@ -86,3 +86,4 @@ out
 ## pwa
 public/workbox-*.js
 public/sw.js
+public/pwa

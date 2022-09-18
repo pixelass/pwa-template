@@ -3,7 +3,9 @@ import create from "zustand";
 import { StoreModel } from "@/ions/store/types";
 
 export const useStore = create<StoreModel>(set => ({
-	count: 0,
+	drawerOpen: false,
+	installPromptOpen: true,
+
 	set(partial) {
 		set(partial);
 	},
