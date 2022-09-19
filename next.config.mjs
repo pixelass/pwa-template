@@ -24,6 +24,9 @@ const config = {
 	i18n: i18next.i18n,
 	reactStrictMode: true,
 	swcMinify: true,
+	compiler: {
+		reactRemoveProperties: true,
+	},
 };
 
 export default withTM(withPWA(config));
