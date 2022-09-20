@@ -1,6 +1,7 @@
 /// @ts-check
 import process from "node:process";
 
+import { withPlaiceholder } from "@plaiceholder/next";
 import nextPWA from "next-pwa";
 import runtimeCaching from "next-pwa/cache.js";
 import transpileModules from "next-transpile-modules";
@@ -27,6 +28,10 @@ const config = {
 	compiler: {
 		reactRemoveProperties: true,
 	},
+	images: {
+		domains: ["source.unsplash.com", "images.unsplash.com", "thispersondoesnotexist.com"],
+		formats: ["image/webp"],
+	},
 };
 
-export default withTM(withPWA(config));
+export default withTM(withPWA(withPlaiceholder(config)));

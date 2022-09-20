@@ -1,6 +1,6 @@
 import create from "zustand";
 
-import { StoreModel } from "@/ions/store/types";
+import { StoreModel } from "./types";
 
 export const useStore = create<StoreModel>(set => ({
 	drawerOpen: false,

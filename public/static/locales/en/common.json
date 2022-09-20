@@ -1,5 +1,8 @@
 {
   "close": "Close",
+  "ok": "OK",
   "open": "Open",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
   "up": "Up"
 }

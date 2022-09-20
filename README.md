@@ -42,6 +42,9 @@ Additional libraries:
 
 - [MUI](https://mui.com/)
 - [i18next](https://www.i18next.com/) ([next-i18next](https://github.com/isaachinman/next-i18next))
+- [Next Auth](https://next-auth.js.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
 
 ## Personalize this template
 
@@ -76,24 +79,20 @@ You can adjust the template by searching for `/pwa[ -]template/i`. It should fin
 - Remove `scripts.setup` in from `package.json`
 - Remove `devDependencies.boxen` in from `package.json`
 - Remove `devDependencies.chalk` in from `package.json`
-- Remove `devDependencies.fullname` in from `package.json`
+- Remove `devDependencies.execa` in from `package.json`
 - Remove `devDependencies.inquirer` in from `package.json`
 - Remove `devDependencies.ora` in from `package.json`
 - Remove `devDependencies.yaml` in from `package.json`
 - Adjust `- if: …` in `.github/workflows/Run_Cypress.yml` to end with
   `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}`
   is the name of the Vercel project.
-- Delete the directory `scripts`.
+- Delete the file `scripts/setup.mjs`.
 
 **Here's a list of all files that should be adjusted:**
 
 - `.github/workflows/Run_Cypress.yml`
 - `package.json`
-- `public/manifest.json`
-- `src/pages/_app.tsx`
-- `/src/pages/_document.tsx`
-- `src/ions/configs/emotion.ts`
-- `scripts` (deleted)
+- `scripts/setup.mjs` (deleted)
 
 </details>
 

@@ -1,5 +1,7 @@
 import { jest } from "@jest/globals";
 
+import { USER } from "@/mocks/user";
+
 jest.mock("next/router", () => ({
 	useRouter() {
 		return {
@@ -13,12 +15,7 @@ jest.mock("next-auth/react", () => ({
 	useSession() {
 		return {
 			data: {
-				user: {
-					id: 1,
-					name: "Alex Morrison",
-					email: "alex.morrison@example.com",
-					image: "/assets/images/random-user.jpg",
-				},
+				user: USER,
 			},
 		};
 	},

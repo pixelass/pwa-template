@@ -10,7 +10,7 @@ const config = {
 	dir: "auto",
 	lang: "en",
 	background: "#121212",
-	theme_color: "#33aacc",
+	theme_color: "#0097A7",
 	appleStatusBarStyle: "black",
 	display: "standalone",
 	orientation: "portrait",

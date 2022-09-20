@@ -1,5 +1,8 @@
 {
   "close": "Schliessen",
+  "ok": "OK",
   "open": "Öffnen",
+  "signIn": "Anmelden",
+  "signOut": "Abmelden",
   "up": "Hoch"
 }

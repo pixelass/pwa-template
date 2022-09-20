@@ -1,56 +1,59 @@
-import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "next-i18next";
-import Head from "next/head";
+import Image from "next/image";
 
+import Grid from "@/organisms/grid";
+import Column from "@/organisms/grid/column";
 import Layout from "@/organisms/layout";
-
-export default function Template() {
+interface ImageType {
+	id: string;
+	label: string;
+	text: string;
+	src: string;
+	height: number;
+	width: number;
+	color: string;
+	base64: string;
+}
+export default function Template({ data: { images } }: { data: { images: ImageType[] } }) {
 	const { t } = useTranslation(["menu"]);
 
 	return (
 		<Layout title="Dashboard">
-			<Head>
-				<title>Dashboard</title>
-				<meta name="description" content="Dashboard" />
-			</Head>
 			<Typography variant="h2" mb={4}>
 				{t("menu:dashboard")}
 			</Typography>
-			<Grid container columns={{ xs: 4, sm: 8, md: 8, lg: 12, xl: 12 }} spacing={2}>
-				{Array.from({ length: 6 }, (_, index) => ({
-					id: index + 1,
-					label: `Card ${index + 1}`,
-					text: "Ubi est festus boreas? Pol, a bene domus, domesticus torquis! Cum solem mori, omnes aususes reperire teres, mirabilis burguses. ",
-					color: `hsl(${(360 / 6) * index}, 100%, 80%)`,
-				})).map(({ id, color, label, text }) => (
-					<Grid item key={id} xs={4}>
+			<Grid>
+				{images.map(({ id, base64, label, src, text }) => (
+					<Column key={id} xs={4}>
 						<Card sx={{ width: "100%" }}>
-							<CardHeader title={label} />
-							<CardMedia>
-								<Box
-									sx={{
-										height: 200,
-										bgcolor: color,
-										color: "common.black",
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
-									<Typography variant="caption">{color}</Typography>
-								</Box>
+							<CardHeader
+								sx={{ ".MuiCardHeader-content": { overflow: "hidden" } }}
+								titleTypographyProps={{ noWrap: true, sx: { overflow: "hidden" } }}
+								avatar={<Avatar alt={label} src={base64} />}
+								title={label}
+							/>
+							<CardMedia sx={{ position: "relative", height: 300 }}>
+								<Image
+									src={src}
+									blurDataURL={base64}
+									placeholder="blur"
+									layout="fill"
+									objectFit="cover"
+									objectPosition="center"
+									alt={label}
+								/>
 							</CardMedia>
 							<CardContent>
 								<Typography>{text}</Typography>
 							</CardContent>
 						</Card>
-					</Grid>
+					</Column>
 				))}
 			</Grid>
 		</Layout>
