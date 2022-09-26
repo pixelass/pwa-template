@@ -12,8 +12,8 @@ export default function Page() {
 	return (
 		<>
 			<Head>
-				<title>{t("meta:auth.signout.title")}</title>
-				<meta name="description" content={t("meta:auth.signout.description")} />
+				<title>{t("meta:auth.signOut.title")}</title>
+				<meta name="description" content={t("meta:auth.signOut.description")} />
 			</Head>
 			<Template />
 		</>

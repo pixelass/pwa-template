@@ -12,8 +12,8 @@ export default function Page() {
 	return (
 		<>
 			<Head>
-				<title>{t("meta:auth.signin.title")}</title>
-				<meta name="description" content={t("meta:auth.signin.description")} />
+				<title>{t("meta:auth.signIn.title")}</title>
+				<meta name="description" content={t("meta:auth.signIn.description")} />
 			</Head>
 			<Template />
 		</>
