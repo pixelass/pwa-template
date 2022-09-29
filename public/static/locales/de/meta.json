@@ -1,12 +1,4 @@
 {
-  "dashboard": {
-    "description": "Dashboard",
-    "title": "Dashboard"
-  },
-  "profile": {
-    "description": "Profil",
-    "title": "Profil"
-  },
   "auth": {
     "error": {
       "description": "Fehler",
@@ -28,5 +20,13 @@
       "description": "Anfrage bestätigen",
       "title": "Anfrage bestätigen"
     }
+  },
+  "dashboard": {
+    "description": "Dashboard",
+    "title": "Dashboard"
+  },
+  "profile": {
+    "description": "Profil",
+    "title": "Profil"
   }
 }

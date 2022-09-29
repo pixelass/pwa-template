@@ -56,8 +56,19 @@ export function Header({ title }) {
 		>
 			<Toolbar>
 				<IconButton
-					aria-label={t("common:back")}
 					edge="start"
+					aria-label={t("common:open")}
+					sx={{
+						color: "inherit",
+					}}
+					onClick={() => {
+						set({ drawerOpen: !drawerOpen });
+					}}
+				>
+					{drawerOpen ? <MenuOpenIcon /> : <MenuIcon />}
+				</IconButton>
+				<IconButton
+					aria-label={t("common:back")}
 					sx={{
 						color: "inherit",
 					}}
@@ -66,18 +77,6 @@ export function Header({ title }) {
 					}}
 				>
 					<ArrowBackIcon />
-				</IconButton>
-				<IconButton
-					aria-label={t("common:open")}
-					sx={{
-						mr: 2,
-						color: "inherit",
-					}}
-					onClick={() => {
-						set({ drawerOpen: !drawerOpen });
-					}}
-				>
-					{drawerOpen ? <MenuOpenIcon /> : <MenuIcon />}
 				</IconButton>
 				<Typography sx={{ flex: 1 }}>{title}</Typography>
 				<Box>
