@@ -1,3 +1,4 @@
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CloseIcon from "@mui/icons-material/Close";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -37,6 +38,7 @@ import { useStore } from "@/ions/store";
 export function Header({ title }) {
 	const { data: session } = useSession({ required: true });
 	const { t } = useTranslation(["common"]);
+	const { back } = useRouter();
 	const drawerOpen = useStore(state => state.drawerOpen);
 	const set = useStore(state => state.set);
 	const [avatarElement, setAvatarElement] = useState<null | HTMLElement>(null);
@@ -54,8 +56,19 @@ export function Header({ title }) {
 		>
 			<Toolbar>
 				<IconButton
-					aria-label={t("common:open")}
+					aria-label={t("common:back")}
 					edge="start"
+					sx={{
+						color: "inherit",
+					}}
+					onClick={() => {
+						void back();
+					}}
+				>
+					<ArrowBackIcon />
+				</IconButton>
+				<IconButton
+					aria-label={t("common:open")}
 					sx={{
 						mr: 2,
 						color: "inherit",
@@ -115,7 +128,13 @@ export function Header({ title }) {
 	);
 }
 
-export function DrawerContent({ withTooltips }: { withTooltips?: boolean }) {
+export function DrawerContent({
+	withTooltips,
+	onNavigate,
+}: {
+	withTooltips?: boolean;
+	onNavigate?(): void;
+}) {
 	const { t } = useTranslation(["menu"]);
 	const { asPath } = useRouter();
 	const Wrapper = useMemo(
@@ -139,6 +158,7 @@ export function DrawerContent({ withTooltips }: { withTooltips?: boolean }) {
 						component="a"
 						selected={asPath === "/profile"}
 						sx={{ color: "text.primary", textDecoration: "none" }}
+						onClick={onNavigate}
 					>
 						<Wrapper title={t("menu:profile")}>
 							<ListItemIcon>
@@ -153,6 +173,7 @@ export function DrawerContent({ withTooltips }: { withTooltips?: boolean }) {
 						component="a"
 						selected={asPath === "/dashboard"}
 						sx={{ color: "text.primary", textDecoration: "none" }}
+						onClick={onNavigate}
 					>
 						<Wrapper title={t("menu:dashboard")}>
 							<ListItemIcon>
@@ -204,7 +225,11 @@ export function TemporaryDrawer() {
 					</IconButton>
 				</Toolbar>
 			</AppBar>
-			<DrawerContent />
+			<DrawerContent
+				onNavigate={() => {
+					useStore.getState().set({ drawerOpen: false });
+				}}
+			/>
 		</SwipeableDrawer>
 	);
 }
