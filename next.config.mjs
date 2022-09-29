@@ -29,7 +29,12 @@ const config = {
 		reactRemoveProperties: true,
 	},
 	images: {
-		domains: ["source.unsplash.com", "images.unsplash.com", "thispersondoesnotexist.com"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "images.unsplash.com",
+			},
+		],
 		formats: ["image/webp"],
 	},
 };

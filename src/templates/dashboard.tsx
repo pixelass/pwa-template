@@ -35,7 +35,19 @@ export default function Template({ data: { images } }: { data: { images: ImageTy
 							<CardHeader
 								sx={{ ".MuiCardHeader-content": { overflow: "hidden" } }}
 								titleTypographyProps={{ noWrap: true, sx: { overflow: "hidden" } }}
-								avatar={<Avatar alt={label} src={base64} />}
+								avatar={
+									<Avatar>
+										<Image
+											src={src}
+											blurDataURL={base64}
+											placeholder="blur"
+											layout="fill"
+											objectFit="cover"
+											objectPosition="center"
+											alt={label}
+										/>
+									</Avatar>
+								}
 								title={label}
 							/>
 							<CardMedia sx={{ position: "relative", height: 300 }}>
