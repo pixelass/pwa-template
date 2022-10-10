@@ -40,8 +40,10 @@ export function Header({ title }) {
 	const { t } = useTranslation(["common"]);
 	const { back } = useRouter();
 	const drawerOpen = useStore(state => state.drawerOpen);
-	const set = useStore(state => state.set);
+	const drawerExpanded = useStore(state => state.drawerExpanded);
 	const [avatarElement, setAvatarElement] = useState<null | HTMLElement>(null);
+	const { breakpoints } = useTheme();
+	const mdUp = useMediaQuery(breakpoints.up("md"));
 
 	const handleCloseUserMenu = () => {
 		setAvatarElement(null);
@@ -57,17 +59,6 @@ export function Header({ title }) {
 			<Toolbar>
 				<IconButton
 					edge="start"
-					aria-label={t("common:open")}
-					sx={{
-						color: "inherit",
-					}}
-					onClick={() => {
-						set({ drawerOpen: !drawerOpen });
-					}}
-				>
-					{drawerOpen ? <MenuOpenIcon /> : <MenuIcon />}
-				</IconButton>
-				<IconButton
 					aria-label={t("common:back")}
 					sx={{
 						color: "inherit",
@@ -85,7 +76,7 @@ export function Header({ title }) {
 						onClick={event => {
 							setAvatarElement(event.currentTarget);
 						}}
-						sx={{ p: 0 }}
+						sx={{ p: 0, mr: { xs: 1, md: 0 } }}
 					>
 						<Avatar>
 							<Image
@@ -122,6 +113,19 @@ export function Header({ title }) {
 						</MenuItem>
 					</Menu>
 				</Box>
+				<IconButton
+					edge="end"
+					aria-label={t("common:open")}
+					sx={{
+						display: { md: "none" },
+						color: "inherit",
+					}}
+					onClick={() => {
+						useStore.getState().set({ drawerOpen: !drawerOpen });
+					}}
+				>
+					{drawerExpanded && mdUp ? <MenuOpenIcon /> : <MenuIcon />}
+				</IconButton>
 			</Toolbar>
 		</AppBar>
 	);
@@ -152,7 +156,7 @@ export function DrawerContent({
 		<Box>
 			<Toolbar />
 			<List component="nav" sx={{ width: "100%" }}>
-				<NextLink passHref href="/profile" shallow={false}>
+				<NextLink passHref href="/profile">
 					<ListItemButton
 						component="a"
 						selected={asPath === "/profile"}
@@ -167,7 +171,7 @@ export function DrawerContent({
 						<ListItemText primary={t("menu:profile")} />
 					</ListItemButton>
 				</NextLink>
-				<NextLink passHref href="/dashboard" shallow={false}>
+				<NextLink passHref href="/dashboard">
 					<ListItemButton
 						component="a"
 						selected={asPath === "/dashboard"}
@@ -189,7 +193,6 @@ export function DrawerContent({
 
 export function TemporaryDrawer() {
 	const drawerOpen = useStore(state => state.drawerOpen);
-	const set = useStore(state => state.set);
 	const { t } = useTranslation(["common", "menu"]);
 	const { breakpoints } = useTheme();
 	const mdUp = useMediaQuery(breakpoints.up("md"));
@@ -203,10 +206,10 @@ export function TemporaryDrawer() {
 			sx={{ display: { xs: "block", md: "none" }, width: DRAWER_WIDTH }}
 			PaperProps={{ sx: { width: DRAWER_WIDTH } }}
 			onClose={() => {
-				set({ drawerOpen: false });
+				useStore.getState().set({ drawerOpen: false });
 			}}
 			onOpen={() => {
-				set({ drawerOpen: true });
+				useStore.getState().set({ drawerOpen: true });
 			}}
 		>
 			<AppBar color="transparent" position="absolute">
@@ -217,7 +220,7 @@ export function TemporaryDrawer() {
 						aria-label={t("common:close")}
 						sx={{ color: "inherit" }}
 						onClick={() => {
-							set({ drawerOpen: false });
+							useStore.getState().set({ drawerOpen: false });
 						}}
 					>
 						<CloseIcon />
@@ -234,7 +237,11 @@ export function TemporaryDrawer() {
 }
 
 export function PermanentDrawer({ drawerWidth }) {
-	const drawerOpen = useStore(state => state.drawerOpen);
+	const drawerExpanded = useStore(state => state.drawerExpanded);
+	const { t } = useTranslation(["common"]);
+	const { breakpoints } = useTheme();
+	const mdUp = useMediaQuery(breakpoints.up("md"));
+
 	return (
 		<Drawer
 			open
@@ -245,7 +252,7 @@ export function PermanentDrawer({ drawerWidth }) {
 				},
 			}}
 			className={clsx({
-				["MuiDrawer-collapsed"]: !drawerOpen,
+				["MuiDrawer-collapsed"]: !drawerExpanded,
 			})}
 			sx={{
 				display: {
@@ -255,7 +262,25 @@ export function PermanentDrawer({ drawerWidth }) {
 				width: drawerWidth,
 			}}
 		>
-			<DrawerContent withTooltips={!drawerOpen} />
+			<DrawerContent withTooltips={!drawerExpanded} />
+			<AppBar color="transparent" position="absolute" sx={{ top: "auto", bottom: 0 }}>
+				<Toolbar>
+					<Tooltip title={drawerExpanded ? t("common:collapse") : t("common:expand")}>
+						<IconButton
+							edge="start"
+							aria-label={t("common:open")}
+							sx={{
+								color: "inherit",
+							}}
+							onClick={() => {
+								useStore.getState().set({ drawerExpanded: !drawerExpanded });
+							}}
+						>
+							{drawerExpanded && mdUp ? <MenuOpenIcon /> : <MenuIcon />}
+						</IconButton>
+					</Tooltip>
+				</Toolbar>
+			</AppBar>
 		</Drawer>
 	);
 }

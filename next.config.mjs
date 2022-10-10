@@ -2,6 +2,7 @@
 import process from "node:process";
 
 import { withPlaiceholder } from "@plaiceholder/next";
+import { withSentryConfig } from "@sentry/nextjs";
 import nextPWA from "next-pwa";
 import runtimeCaching from "next-pwa/cache.js";
 import transpileModules from "next-transpile-modules";
@@ -9,6 +10,7 @@ import transpileModules from "next-transpile-modules";
 import i18next from "./next-i18next.config.js";
 
 const withTM = transpileModules(["@mui/material"]); // Pass the modules you would like to see transpiled
+
 const withPWA = nextPWA({
 	disable: process.env.NODE_ENV === "development",
 	dest: "public",
@@ -17,6 +19,26 @@ const withPWA = nextPWA({
 	runtimeCaching,
 	buildExcludes: [/middleware-manifest.json$/],
 });
+
+/**
+ *  Make sentry compatible for plugin composer
+ * @param nextConfig
+ * @returns {import('next').NextConfigFunction |import('next').NextConfigObject}
+ */
+function withSentry(nextConfig) {
+	return withSentryConfig(nextConfig, { silent: true });
+}
+
+/**
+ *
+ * @param plugins
+ * @param {import('next').NextConfig} nextConfig
+ * @returns {import('next').NextConfigObject}
+ */
+function withPlugins(plugins, nextConfig) {
+	return plugins.reduce((previousValue, currentValue) => currentValue(previousValue), nextConfig);
+}
+
 /**
  *
  * @type {import('next').NextConfig} config
@@ -39,4 +61,4 @@ const config = {
 	},
 };
 
-export default withTM(withPWA(withPlaiceholder(config)));
+export default withPlugins([withSentry, withPlaiceholder, withPWA, withTM], config);

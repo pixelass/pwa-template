@@ -4,8 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { nanoid } from "nanoid";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import { useState } from "react";
 
 import Grid from "@/organisms/grid";
 import Column from "@/organisms/grid/column";
@@ -22,14 +24,37 @@ interface ImageType {
 }
 export default function Template({ data: { images } }: { data: { images: ImageType[] } }) {
 	const { t } = useTranslation(["menu"]);
+	const [cards, setCards] = useState(images);
 
 	return (
-		<Layout title="Dashboard">
+		<Layout
+			title="Dashboard"
+			onPullActive={() => {
+				console.log("onPullActive");
+			}}
+			onPullEnd={() => {
+				console.log("onPullEnd");
+				setCards(previousState => [
+					...[
+						previousState[Math.round(Math.random() * previousState.length)],
+						previousState[Math.round(Math.random() * previousState.length)],
+						previousState[Math.round(Math.random() * previousState.length)],
+					].map(card => ({
+						...card,
+						label: `Dynamic load ${Math.round(Math.random() * 1000 + 1)
+							.toString()
+							.padStart(4, "0")}`,
+						id: nanoid(),
+					})),
+					...cards,
+				]);
+			}}
+		>
 			<Typography variant="h2" mb={4}>
 				{t("menu:dashboard")}
 			</Typography>
 			<Grid>
-				{images.map(({ id, base64, label, src, text }) => (
+				{cards.map(({ id, base64, label, src, text }) => (
 					<Column key={id} xs={4}>
 						<Card sx={{ width: "100%" }}>
 							<CardHeader

@@ -89,3 +89,6 @@ out
 public/workbox-*.js
 public/sw.js
 public/pwa
+
+# Sentry
+.sentryclirc

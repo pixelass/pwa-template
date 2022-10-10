@@ -1,6 +1,8 @@
 {
   "back": "Back",
   "close": "Close",
+  "collapse": "Collapse",
+  "expand": "Expand",
   "ok": "OK",
   "open": "Open",
   "signIn": "Sign in",
