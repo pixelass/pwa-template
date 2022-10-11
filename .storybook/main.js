@@ -33,32 +33,9 @@ module.exports = {
 			module: false,
 			path: require.resolve("path-browserify"),
 		};
-		config.module.rules.push({
-			test: /\.(ts|tsx)$/,
-			use: [
-				{
-					loader: require.resolve("babel-loader"),
-					options: {
-						presets: ["next/babel"],
-						plugins: [
-							[
-								"@emotion/babel-plugin",
-								{
-									sourceMap: true,
-									autoLabel: "dev-only",
-									labelFormat: "[local]",
-									cssPropOptimization: false,
-								},
-							],
-						],
-					},
-				},
-			],
-		});
 		config.resolve.alias = {
 			...config.resolve.alias,
 			"@emotion/core": toPath("node_modules/@emotion/react"),
-			"@emotion/styled": toPath("node_modules/@emotion/styled"),
 			"emotion-theming": toPath("node_modules/@emotion/react"),
 			"@": toPath("src"),
 		};
