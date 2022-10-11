@@ -32,6 +32,7 @@ A template for Next.js with PWA support and i18n.
 
 - [Storybook](https://storybook.js.org/)
 - [Cypress](https://cypress.io/)
+- [Sentry](https://sentry.io/)
 - [Jest](https://jestjs.io/)
 - [Commitlint](https://commitlint.js.org/)
 - [Stylelint](https://stylelint.io/)
@@ -41,7 +42,8 @@ A template for Next.js with PWA support and i18n.
 Additional libraries:
 
 - [MUI](https://mui.com/)
-- [i18next](https://www.i18next.com/) ([next-i18next](https://github.com/isaachinman/next-i18next))
+- [i18next](https://www.i18next.com/) (via
+  [next-i18next](https://github.com/isaachinman/next-i18next))
 - [Next Auth](https://next-auth.js.org/)
 - [React Hook Form](https://react-hook-form.com/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
@@ -122,6 +124,13 @@ Please follow this guide: https://vercel.com/docs/concepts/git
    - OUTPUT DIRECTORY: `./storybook-static`
 
 <p align="center"><img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/></p>
+
+## Setup Sentry
+
+Please look at [the guide](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/).
+
+Everything is already set up. You need to add the correct environmental variables (See
+[`.env.local.example`](.env.local.example))
 
 ## Getting started
 
