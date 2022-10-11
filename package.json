@@ -124,7 +124,7 @@
     "path-browserify": "^1.0.1",
     "prettier": "^2.7.1",
     "standard-version": "^9.5.0",
-    "storybook-addon-next-router": "^4.0.0",
+    "storybook-addon-next": "^1.6.9",
     "storybook-react-i18next": "^1.1.2",
     "stylelint": "^13.13.1",
     "stylelint-a11y": "^1.2.3",

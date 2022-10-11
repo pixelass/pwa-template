@@ -4,10 +4,12 @@ import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
-import React from "react";
+import React, { useMemo } from "react";
 
 import { cache } from "@/ions/configs/emotion";
-import { light as theme } from "@/ions/theme";
+import useDarkMode from "@/ions/hooks/dark-mode";
+import StoreProvider from "@/ions/store/context";
+import { dark, light } from "@/ions/theme";
 import { USER } from "@/mocks/user";
 import i18n from "./i18next";
 
@@ -21,6 +23,12 @@ export const parameters = {
 	},
 	nextRouter: {
 		Provider: RouterContext.Provider,
+	},
+	backgrounds: {
+		disable: true,
+		grid: {
+			disable: true,
+		},
 	},
 	i18n,
 	locale: "en",
@@ -46,15 +54,22 @@ const storyBookReset = (
 );
 
 export const decorators = [
-	Story => (
-		<EmotionCacheProvider value={cache}>
-			<MuiThemeProvider theme={theme}>
-				<SessionProvider session={session}>
-					{storyBookReset}
-					<CssBaseline />
-					<Story />
-				</SessionProvider>
-			</MuiThemeProvider>
-		</EmotionCacheProvider>
-	),
+	Story => {
+		const darkMode = useDarkMode(true);
+		const theme = useMemo(() => (darkMode ? dark : light), [darkMode]);
+
+		return (
+			<EmotionCacheProvider value={cache}>
+				<MuiThemeProvider theme={theme}>
+					<SessionProvider session={session}>
+						<StoreProvider>
+							{storyBookReset}
+							<CssBaseline />
+							<Story />
+						</StoreProvider>
+					</SessionProvider>
+				</MuiThemeProvider>
+			</EmotionCacheProvider>
+		);
+	},
 ];

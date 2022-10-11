@@ -8,7 +8,12 @@ module.exports = {
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
 		"@storybook/addon-interactions",
-		"storybook-addon-next-router",
+		{
+			name: "storybook-addon-next",
+			options: {
+				nextConfigPath: path.resolve(__dirname, "./nextConfig.js"),
+			},
+		},
 		"storybook-react-i18next",
 	],
 	framework: "@storybook/react",
