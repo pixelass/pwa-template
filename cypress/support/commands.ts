@@ -26,7 +26,12 @@ Cypress.Commands.add("login", function (userObj) {
 		.then(() => encode(userObj, Cypress.env("NEXT_AUTH_SECRET")))
 		.then(encryptedToken => {
 			cy.setCookie("next-auth.session-token", encryptedToken);
-			cy.setCookie("__Secure-next-auth.session-token", encryptedToken, { secure: true });
+			cy.setCookie("__Secure-next-auth.session-token", encryptedToken, {
+				httpOnly: true,
+				sameSite: "lax",
+				path: "/",
+				secure: true,
+			});
 		});
 });
 

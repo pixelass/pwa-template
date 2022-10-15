@@ -22,9 +22,9 @@ interface ImageType {
 	color: string;
 	base64: string;
 }
-export default function Template({ data: { images } }: { data: { images: ImageType[] } }) {
+export default function Template({ data }: { data: { images: ImageType[] } }) {
 	const { t } = useTranslation(["menu"]);
-	const [cards, setCards] = useState(images);
+	const [cards, setCards] = useState(data.images);
 
 	return (
 		<Layout

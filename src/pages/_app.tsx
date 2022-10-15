@@ -33,7 +33,6 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 	const darkMode = useDarkMode(true);
 	const theme = useMemo(() => (darkMode ? dark : light), [darkMode]);
 	const showInstallPrompt = useInstallPrompt();
-
 	return (
 		<>
 			<Head>
