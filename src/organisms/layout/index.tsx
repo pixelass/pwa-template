@@ -1,9 +1,11 @@
-import { Header, Main, PermanentDrawer, TemporaryDrawer } from "./components";
+import { Main } from "./components";
 import { DRAWER_WIDTH, DRAWER_WIDTH_MINI } from "./constants";
+import { LayoutProps } from "./types";
 
 import { useStore } from "@/ions/store";
 import PullToRefresh from "@/molecules/pull-to-load";
-import { LayoutProps } from "@/organisms/layout/types";
+import Drawers from "@/organisms/drawer";
+import Header from "@/organisms/header";
 
 export default function Layout({ children, title, onPullActive, onPullEnd }: LayoutProps) {
 	const drawerExpanded = useStore(state => state.drawerExpanded);
@@ -13,8 +15,7 @@ export default function Layout({ children, title, onPullActive, onPullEnd }: Lay
 		<>
 			<PullToRefresh color="primary.contrastText" onEnd={onPullEnd} onActive={onPullActive} />
 			<Header title={title} />
-			<TemporaryDrawer />
-			<PermanentDrawer drawerWidth={drawerWidth} />
+			<Drawers drawerWidth={drawerWidth} />
 			<Main drawerWidth={drawerWidth}>{children}</Main>
 		</>
 	);
