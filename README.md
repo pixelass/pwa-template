@@ -128,6 +128,9 @@ Please follow this guide: https://vercel.com/docs/concepts/git
 ## Setup Sentry
 
 Please look at [the guide](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/).
+Especially the
+[configuration](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#configure-sentry-cli)
+section
 
 Everything is already set up. You need to add the correct environmental variables (See
 [`.env.local.example`](.env.local.example))
