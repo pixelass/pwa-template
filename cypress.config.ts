@@ -45,7 +45,6 @@ async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginC
 
 export default defineConfig({
 	retries: 0,
-	projectId: "kfutud",
 	e2e: {
 		baseUrl: "http://localhost:3000",
 		specPattern: "cypress/**/*.feature",
