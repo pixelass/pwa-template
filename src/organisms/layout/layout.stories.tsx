@@ -18,7 +18,7 @@ Default.parameters = {
 };
 
 const story = {
-	title: "Layout",
+	title: "Organisms / Layout",
 	component: Layout,
 };
 

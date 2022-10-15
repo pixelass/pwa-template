@@ -3,7 +3,7 @@ import { LayoutProps } from "./types";
 
 import { useStore } from "@/ions/store";
 import PullToRefresh from "@/molecules/pull-to-load";
-import Drawers from "@/organisms/drawer";
+import Drawer from "@/organisms/drawer";
 import Header from "@/organisms/header";
 import Main from "@/organisms/main";
 
@@ -15,7 +15,7 @@ export default function Layout({ children, title, onPullActive, onPullEnd }: Lay
 		<>
 			<PullToRefresh color="primary.contrastText" onEnd={onPullEnd} onActive={onPullActive} />
 			<Header title={title} />
-			<Drawers drawerWidth={drawerWidth} />
+			<Drawer drawerWidth={drawerWidth} />
 			<Main drawerWidth={drawerWidth}>{children}</Main>
 		</>
 	);

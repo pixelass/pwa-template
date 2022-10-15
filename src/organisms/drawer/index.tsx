@@ -1,6 +1,6 @@
 import { PermanentDrawer, TemporaryDrawer } from "./components";
 
-export default function Drawers({ drawerWidth }: { drawerWidth: number }) {
+export default function Drawer({ drawerWidth }: { drawerWidth: number }) {
 	return (
 		<>
 			<TemporaryDrawer />

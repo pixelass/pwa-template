@@ -11,6 +11,8 @@ import React, { useMemo } from "react";
 
 import { cache } from "@/ions/configs/emotion";
 import useDarkMode from "@/ions/hooks/dark-mode";
+import useInstallPrompt from "@/ions/hooks/install-prompt";
+import { useStore } from "@/ions/store";
 import StoreProvider from "@/ions/store/context";
 import { dark, light } from "@/ions/theme";
 
@@ -27,8 +29,10 @@ if (typeof window === "undefined") {
 type AppProps = NextAppProps<{ session: Session | null } & SSRConfig>;
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+	const installPromptOpen = useStore(state => state.installPromptOpen);
 	const darkMode = useDarkMode(true);
 	const theme = useMemo(() => (darkMode ? dark : light), [darkMode]);
+	const showInstallPrompt = useInstallPrompt();
 
 	return (
 		<>
@@ -44,7 +48,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 							<Component {...pageProps} />
 						</StoreProvider>
 					</SessionProvider>
-					<InstallPrompt />
+					{showInstallPrompt && <InstallPrompt open={installPromptOpen} />}
 				</MuiThemeProvider>
 			</EmotionCacheProvider>
 		</>
