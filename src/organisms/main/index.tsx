@@ -2,7 +2,13 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { ReactNode } from "react";
 
-export function Main({ children, drawerWidth }: { children: ReactNode; drawerWidth: number }) {
+export default function Main({
+	children,
+	drawerWidth,
+}: {
+	children: ReactNode;
+	drawerWidth: number;
+}) {
 	return (
 		<Box
 			component="main"
