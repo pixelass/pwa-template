@@ -26,6 +26,7 @@ Cypress.Commands.add("login", function (userObj) {
 		.then(() => encode(userObj, Cypress.env("NEXT_AUTH_SECRET")))
 		.then(encryptedToken => {
 			cy.setCookie("next-auth.session-token", encryptedToken);
+			cy.setCookie("__Secure-next-auth.session-token", encryptedToken);
 		});
 });
 
@@ -34,6 +35,7 @@ Cypress.Commands.add("login", function (userObj) {
  */
 Cypress.Commands.add("logout", function () {
 	cy.clearCookie("next-auth.session-token");
+	cy.clearCookie("__Secure-next-auth.session-token");
 });
 
 Cypress.Commands.add("gql", function (operations) {
