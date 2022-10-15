@@ -4,7 +4,6 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { getPlaiceholder } from "plaiceholder";
-import React from "react";
 
 import Template from "@/templates/dashboard";
 

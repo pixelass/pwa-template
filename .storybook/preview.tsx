@@ -4,7 +4,7 @@ import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 import { cache } from "@/ions/configs/emotion";
 import useDarkMode from "@/ions/hooks/dark-mode";

@@ -4,7 +4,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-import React from "react";
 
 import Grid from "@/organisms/grid";
 import Column from "@/organisms/grid/column";
