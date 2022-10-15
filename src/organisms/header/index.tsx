@@ -66,8 +66,6 @@ export default function Header({ title }) {
 							<Image
 								src={session.user.image}
 								alt={session.user.name}
-								width={96}
-								height={96}
 								quality={40}
 								layout="fill"
 								objectFit="cover"
