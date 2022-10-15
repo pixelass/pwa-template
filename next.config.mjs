@@ -26,7 +26,10 @@ const withPWA = nextPWA({
  * @returns {import('next').NextConfigFunction |import('next').NextConfigObject}
  */
 function withSentry(nextConfig) {
-	return withSentryConfig(nextConfig, { silent: true });
+	return withSentryConfig(nextConfig, {
+		silent: true,
+		dryRun: process.env.VERCEL_ENV !== "production",
+	});
 }
 
 /**
