@@ -23,14 +23,14 @@ function buildComponents() {
 	const components: ComponentsType = {
 		MuiCssBaseline: {
 			styleOverrides: `
-		:root {
-			color-scheme: light dark;
-			user-select: none;
-		}
-		#__next {
-			display: contents;
-		}
-		`,
+			:root {
+				color-scheme: light dark;
+				user-select: none;
+			}
+			#__next {
+				display: contents;
+			}
+			`,
 		},
 		MuiAppBar: {
 			defaultProps: {
