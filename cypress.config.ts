@@ -2,6 +2,8 @@ import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-prepro
 import webpack from "@cypress/webpack-preprocessor";
 import { defineConfig } from "cypress";
 import * as Cypress from "cypress";
+import { config } from "dotenv";
+config({ path: ".env.local" });
 
 async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
 	await addCucumberPreprocessorPlugin(on, config);
@@ -47,5 +49,8 @@ export default defineConfig({
 		baseUrl: "http://localhost:3000",
 		specPattern: "cypress/**/*.feature",
 		setupNodeEvents,
+	},
+	env: {
+		NEXT_AUTH_SECRET: process.env.NEXT_AUTH_SECRET,
 	},
 });
