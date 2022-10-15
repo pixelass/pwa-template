@@ -38,6 +38,8 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - uses: cypress-io/github-action@v4
+        with:
+          record: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
