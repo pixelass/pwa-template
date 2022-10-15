@@ -1,5 +1,8 @@
+import pkg from "./package.json" assert { type: "json" };
+
 const config = {
 	key: "pwa-template",
+	version: pkg.version,
 	path: "/pwa/",
 	appName: "PWA Template",
 	appShortName: "PWA",
@@ -16,6 +19,9 @@ const config = {
 	orientation: "portrait",
 	scope: "/",
 	start_url: "/",
+	pixel_art: false,
+	loadManifestWithCredentials: false,
+	manifestMaskable: true,
 	preferRelatedApplications: false,
 	relatedApplications: undefined,
 	icons: {

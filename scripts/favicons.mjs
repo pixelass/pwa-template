@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 import favicons from "favicons";
 import prettier from "prettier";
 
-import pkg from "../package.json" assert { type: "json" };
 import pwaConfig from "../pwa.config.mjs";
 
 export const __filename = fileURLToPath(import.meta.url);
@@ -59,8 +58,4 @@ async function run(config) {
 
 void run({
 	...pwaConfig_,
-	version: pkg.version,
-	pixel_art: false,
-	loadManifestWithCredentials: false,
-	manifestMaskable: false,
 });
