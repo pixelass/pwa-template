@@ -39,5 +39,8 @@ jobs:
 
       - uses: cypress-io/github-action@v4
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           NEXT_AUTH_SECRET: ${{ secrets.NEXT_AUTH_SECRET }}
