@@ -6,17 +6,18 @@ jobs:
   test:
     if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview – pwa-template'
     name: Run Cypress
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-
-      - uses: n1hility/cancel-previous-runs@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
+
+      - uses: n1hility/cancel-previous-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -39,9 +40,5 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           NEXT_AUTH_SECRET: ${{ secrets.NEXT_AUTH_SECRET }}
-          DEMO_USERNAME: ${{ secrets.DEMO_USERNAME }}
-          DEMO_PASSWORD: ${{ secrets.DEMO_PASSWORD }}
           NEXTAUTH_URL: ${{ github.event.deployment_status.target_url }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+
