@@ -1,13 +1,10 @@
 name: Run Cypress
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - "**"
+on: [deployment_status]
 
 jobs:
   test:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview – pwa-template'
     name: Run Cypress
     runs-on: ubuntu-20.04
     steps:
@@ -35,18 +32,16 @@ jobs:
 
       - uses: cypress-io/github-action@v4
         with:
-          build: yarn build
-          start: yarn start
           record: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CYPRESS_BASE_URL: "http://localhost:3000"
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          NEXT_AUTH_SECRET: this-is-a-secret
+          NEXT_AUTH_SECRET: ${{ secrets.NEXT_AUTH_SECRET }}
           DEMO_USERNAME: ${{ secrets.DEMO_USERNAME }}
           DEMO_PASSWORD: ${{ secrets.DEMO_PASSWORD }}
-          NEXTAUTH_URL: "http://localhost:3000"
+          NEXTAUTH_URL: ${{ github.event.deployment_status.target_url }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
