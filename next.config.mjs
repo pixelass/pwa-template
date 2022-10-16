@@ -51,7 +51,10 @@ const config = {
 	reactStrictMode: true,
 	swcMinify: true,
 	compiler: {
-		reactRemoveProperties: true,
+		// Allows to remove JSX properties. This is often used for testing.
+		// Similar to babel-plugin-react-remove-properties.
+		// To remove properties matching the default regex ^data-test:
+		// reactRemoveProperties: true,
 	},
 	images: {
 		remotePatterns: [

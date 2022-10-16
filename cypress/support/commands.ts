@@ -59,17 +59,9 @@ Cypress.Commands.add("gql", function (operations) {
 });
 
 Cypress.Commands.add("dataCy", function (value) {
-	return cy.get(`[data-cy=${value}]`);
+	return cy.get(`[data-cy="${value}"]`);
 });
 
 Cypress.Commands.add("dataTestId", function (value) {
-	return cy.get(`[data-test-id=${value}]`);
-});
-
-Cypress.Commands.add("dataTestState", function (value) {
-	return cy.get(`[data-test-state=${value}]`);
-});
-
-Cypress.Commands.add("dataTestSelector", function (value) {
-	return cy.get(`[data-test-selector=${value}]`);
+	return cy.get(`[data-testid="${value}"]`);
 });

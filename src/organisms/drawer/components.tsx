@@ -11,6 +11,7 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { PaperProps } from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Toolbar from "@mui/material/Toolbar";
@@ -54,6 +55,7 @@ export function DrawerContent({
 				<NextLink passHref href="/profile">
 					<ListItemButton
 						component="a"
+						data-cy="sidebar:menu.profile"
 						selected={asPath === "/profile"}
 						sx={{ color: "text.primary", textDecoration: "none" }}
 						onClick={onNavigate}
@@ -99,7 +101,9 @@ export function TemporaryDrawer() {
 				keepMounted: true,
 			}}
 			sx={{ display: { xs: "block", md: "none" }, width: DRAWER_WIDTH }}
-			PaperProps={{ sx: { width: DRAWER_WIDTH } }}
+			PaperProps={
+				{ "data-cy": "sidebar:mobile", sx: { width: DRAWER_WIDTH } } as Partial<PaperProps>
+			}
 			onClose={() => {
 				useStore.getState().set({ drawerOpen: false });
 			}}
@@ -141,11 +145,14 @@ export function PermanentDrawer({ drawerWidth }) {
 		<Drawer
 			open
 			variant="persistent"
-			PaperProps={{
-				sx: {
-					width: drawerWidth,
-				},
-			}}
+			PaperProps={
+				{
+					"data-cy": drawerExpanded ? "sidebar:desktop" : "sidebar:desktop.collapsed",
+					sx: {
+						width: drawerWidth,
+					},
+				} as Partial<PaperProps>
+			}
 			className={clsx({
 				["MuiDrawer-collapsed"]: !drawerExpanded,
 			})}
@@ -163,6 +170,7 @@ export function PermanentDrawer({ drawerWidth }) {
 					<Tooltip title={drawerExpanded ? t("common:collapse") : t("common:expand")}>
 						<IconButton
 							edge="start"
+							data-cy="sidebar:collapse"
 							aria-label={t("common:open")}
 							sx={{
 								color: "inherit",

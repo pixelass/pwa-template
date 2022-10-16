@@ -8,8 +8,6 @@ declare namespace Cypress {
 		 */
 		dataCy(value: string): Chainable<JQuery<Element>>;
 		dataTestId(value: string): Chainable<JQuery<Element>>;
-		dataTestState(value: string): Chainable<JQuery<Element>>;
-		dataTestSelector(value: string): Chainable<JQuery<Element>>;
 		login(userObj: Record<string, string>): Chainable;
 		logout(): Chainable;
 		gql(

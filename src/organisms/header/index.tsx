@@ -57,6 +57,7 @@ export default function Header({ title }) {
 				<Box>
 					<IconButton
 						edge="end"
+						data-cy="user-menu:button"
 						onClick={event => {
 							setAvatarElement(event.currentTarget);
 						}}
@@ -75,9 +76,10 @@ export default function Header({ title }) {
 					</IconButton>
 					<Menu
 						keepMounted
-						sx={{ mt: { xs: 6, sm: 7 } }}
+						data-cy="user-menu:menu"
 						open={Boolean(avatarElement)}
 						anchorEl={avatarElement}
+						sx={{ mt: { xs: 6, sm: 7 } }}
 						anchorOrigin={{
 							vertical: "top",
 							horizontal: "right",
@@ -89,6 +91,7 @@ export default function Header({ title }) {
 						onClose={handleCloseUserMenu}
 					>
 						<MenuItem
+							data-cy="user-menu:signOut"
 							onClick={async () => {
 								await signOut();
 								handleCloseUserMenu();
@@ -100,6 +103,7 @@ export default function Header({ title }) {
 				</Box>
 				<IconButton
 					edge="end"
+					data-cy="sidebar:header.toggle"
 					aria-label={t("common:open")}
 					sx={{
 						display: { md: "none" },

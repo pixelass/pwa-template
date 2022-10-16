@@ -7,4 +7,4 @@ Feature: Login
 	Scenario: The user wants to access their profile
 		Given the user is logged in
 		And the user is on the root page
-		Then the dashboard is displayed
+		Then the user is on the dashboard page

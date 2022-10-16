@@ -1,23 +1,25 @@
 name: Run Cypress
 
-on: [deployment_status]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - "**"
 
 jobs:
   test:
-    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview – pwa-template'
     name: Run Cypress
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
 
       - uses: n1hility/cancel-previous-runs@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -33,12 +35,20 @@ jobs:
 
       - uses: cypress-io/github-action@v4
         with:
+          build: yarn build
+          start: yarn start
           record: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_BASE_URL: "http://localhost:3000"
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          NEXT_AUTH_SECRET: ${{ secrets.NEXT_AUTH_SECRET }}
-          NEXTAUTH_URL: ${{ github.event.deployment_status.target_url }}
-
+          NEXT_AUTH_SECRET: this-is-a-secret
+          NEXTAUTH_URL: "http://localhost:3000"
+          DEMO_USERNAME: ${{ secrets.DEMO_USERNAME }}
+          DEMO_PASSWORD: ${{ secrets.DEMO_PASSWORD }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          UNSPLASH_SECRET_KEY: ${{ secrets.UNSPLASH_SECRET_KEY }}
