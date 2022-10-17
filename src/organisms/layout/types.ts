@@ -8,6 +8,7 @@ export interface WrapperProps {
 export interface LayoutProps {
 	children?: ReactNode;
 	title?: string;
+	fab?: ReactNode;
 
 	onPullActive?(): void;
 

@@ -1,14 +1,12 @@
 import Layout from ".";
 
-function Template({ children }) {
-	return <Layout>{children}</Layout>;
+function Template() {
+	return <Layout />;
 }
 
 export const Default = Template.bind({});
 
-Default.args = {
-	children: "The Layout",
-};
+Default.args = {};
 
 Default.parameters = {
 	nextRouter: {

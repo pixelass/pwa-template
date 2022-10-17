@@ -1,30 +1,33 @@
+import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 
 import Grid from "@/organisms/grid";
 import Column from "@/organisms/grid/column";
-import Layout from "@/organisms/layout";
+import LayoutContained from "@/organisms/layout/contained";
 
 export default function Template() {
 	const { t } = useTranslation(["menu"]);
 	const { data: session } = useSession();
 	return (
-		<Layout title="Profile">
-			<Typography variant="h2">{t("menu:profile")}</Typography>
+		<LayoutContained>
+			<Typography variant="h2" mb={4}>
+				{t("menu:profile")}
+			</Typography>
 			<Grid>
 				<Column xs={4}>
 					<Card>
-						<CardMedia component="img" src={session.user.image} height={304} />
-						<CardContent>
-							<Typography>{session.user.name}</Typography>
-						</CardContent>
+						<CardHeader
+							avatar={<Avatar src={session.user.image} alt={session.user.name} />}
+							title={session.user.name}
+							subheader={session.user.email}
+						/>
 					</Card>
 				</Column>
 			</Grid>
-		</Layout>
+		</LayoutContained>
 	);
 }

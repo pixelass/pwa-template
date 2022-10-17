@@ -1,14 +1,12 @@
 import Header from ".";
 
-function Template({ title }) {
-	return <Header title={title} />;
+function Template() {
+	return <Header />;
 }
 
 export const Default = Template.bind({});
 
-Default.args = {
-	title: "Header",
-};
+Default.args = {};
 
 Default.parameters = {};
 

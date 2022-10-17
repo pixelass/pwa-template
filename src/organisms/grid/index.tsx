@@ -1,4 +1,4 @@
-import MuiGrid from "@mui/material/Grid";
+import MuiGrid from "@mui/material/Unstable_Grid2";
 
 import { GridProps } from "./types";
 

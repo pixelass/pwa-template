@@ -4,6 +4,7 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,9 +18,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+import Logo from "@/atoms/Logo";
 import { useStore } from "@/ions/store";
 
-export default function Header({ title }) {
+export default function Header() {
 	const { data: session } = useSession({ required: true });
 	const { t } = useTranslation(["common"]);
 	const { back } = useRouter();
@@ -46,6 +48,7 @@ export default function Header({ title }) {
 					aria-label={t("common:back")}
 					sx={{
 						color: "inherit",
+						mr: 1,
 					}}
 					onClick={() => {
 						void back();
@@ -53,7 +56,11 @@ export default function Header({ title }) {
 				>
 					<ArrowBackIcon />
 				</IconButton>
-				<Typography sx={{ flex: 1 }}>{title}</Typography>
+				<Box sx={{ flex: 1 }}>
+					<Container sx={{ display: "flex", justifyContent: "center" }}>
+						<Logo />
+					</Container>
+				</Box>
 				<Box>
 					<IconButton
 						edge="end"
@@ -61,7 +68,7 @@ export default function Header({ title }) {
 						onClick={event => {
 							setAvatarElement(event.currentTarget);
 						}}
-						sx={{ p: 0, mr: { xs: 1, md: 0 } }}
+						sx={{ p: 0, display: { xs: "none", md: "flex" } }}
 					>
 						<Avatar>
 							<Image

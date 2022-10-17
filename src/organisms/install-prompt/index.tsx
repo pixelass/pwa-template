@@ -12,12 +12,12 @@ import { useTranslation } from "next-i18next";
 import { useStore } from "@/ions/store";
 import { setOpacity } from "@/ions/utils/color";
 
-export default function InstallPrompt({ open = false }: { open: boolean }) {
+export default function InstallPrompt() {
 	const { t } = useTranslation(["common"]);
-
+	const installPromptOpen = useStore(state => state.installPromptOpen);
 	return (
 		<Snackbar
-			open={open}
+			open={installPromptOpen}
 			onClose={() => {
 				useStore.getState().set({ installPromptOpen: false });
 			}}
@@ -37,20 +37,20 @@ export default function InstallPrompt({ open = false }: { open: boolean }) {
 					backdropFilter: "blur(4px) contrast(0.5)",
 				}}
 			>
-				<CardContent>
+				<CardContent sx={{ pb: 0 }}>
 					<Stack direction="row" alignItems="center" justifyContent="center">
 						<Typography sx={{ display: "inline-block" }}>
 							Press the Share Icon
 						</Typography>
 						<IosShareIcon aria-hidden="true" sx={{ ml: 2, color: "info.main" }} />
 					</Stack>
-					<Typography my={2}>Then press:</Typography>
+					<Typography mb={1}>Then press:</Typography>
 					<Stack direction="row" alignItems="center" justifyContent="space-between">
 						<Typography sx={{ display: "inline-block" }}>Add to Home Screen</Typography>
 						<AddBoxOutlinedIcon aria-hidden="true" />
 					</Stack>
 				</CardContent>
-				<CardActions>
+				<CardActions sx={{ py: 0 }}>
 					<Button
 						onClick={() => {
 							useStore.getState().set({ installPromptOpen: false });

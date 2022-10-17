@@ -13,9 +13,26 @@ const IMAGES_QUERY = /* GraphQL */ `
 	query getImages {
 		images {
 			id
-			label
-			text
-			src
+			description
+			alt_description
+			color
+			likes
+			user {
+				username
+				first_name
+				last_name
+				location
+				bio
+				profile_image {
+					small
+				}
+				links {
+					html
+				}
+			}
+			urls {
+				full
+			}
 			height
 			width
 			base64
@@ -24,17 +41,8 @@ const IMAGES_QUERY = /* GraphQL */ `
 `;
 
 function PageWithData() {
-	const { data } = useQuery(IMAGES_QUERY);
-	const { t } = useTranslation(["meta"]);
-	return (
-		<>
-			<Head>
-				<title>{t("meta:dashboard.title")}</title>
-				<meta name="description" content={t("meta:dashboard.description")} />
-			</Head>
-			<Template data={data} />
-		</>
-	);
+	const { data, isLoading } = useQuery(IMAGES_QUERY);
+	return <Template data={data} isLoading={isLoading} />;
 }
 
 export default function Page({ fallback }) {

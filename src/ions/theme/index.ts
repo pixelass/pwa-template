@@ -1,8 +1,8 @@
-import blue from "@mui/material/colors/blue";
 import blueGrey from "@mui/material/colors/blueGrey";
-import deepPurple from "@mui/material/colors/deepPurple";
-import lightBlue from "@mui/material/colors/lightBlue";
-import teal from "@mui/material/colors/teal";
+import cyan from "@mui/material/colors/cyan";
+import deepOrange from "@mui/material/colors/deepOrange";
+import orange from "@mui/material/colors/orange";
+import red from "@mui/material/colors/red";
 import { PaletteOptions } from "@mui/material/styles/createPalette";
 import createTheme from "@mui/material/styles/createTheme";
 
@@ -21,17 +21,6 @@ export const spacing = 8;
 
 function buildComponents() {
 	const components: ComponentsType = {
-		MuiCssBaseline: {
-			styleOverrides: `
-			:root {
-				color-scheme: light dark;
-				user-select: none;
-			}
-			#__next {
-				display: contents;
-			}
-			`,
-		},
 		MuiAppBar: {
 			defaultProps: {
 				elevation: 0,
@@ -58,28 +47,28 @@ function buildComponents() {
 		MuiCard: {
 			defaultProps: {},
 		},
+		MuiCssBaseline: {
+			styleOverrides: {
+				":root": {
+					colorScheme: "light dark",
+					userSelect: "none",
+				},
+				"#__next": {
+					display: "contents",
+				},
+			},
+		},
+		MuiFab: {
+			styleOverrides: {
+				root: {
+					borderRadius: shape.borderRadius,
+				},
+			},
+		},
 		MuiList: {
 			styleOverrides: {
 				root: {
 					padding: `${spacing}px 0`,
-				},
-			},
-		},
-		MuiListItemIcon: {
-			styleOverrides: {
-				root: {
-					margin: "4px 0",
-					minWidth: 24,
-				},
-			},
-		},
-		MuiListItemText: {
-			styleOverrides: {
-				primary: {
-					marginLeft: spacing * 3,
-					".MuiDrawer-collapsed &": {
-						display: "none",
-					},
 				},
 			},
 		},
@@ -96,6 +85,24 @@ function buildComponents() {
 				},
 			},
 		},
+		MuiListItemIcon: {
+			styleOverrides: {
+				root: {
+					margin: `${spacing / 2}px 0`,
+					minWidth: 24,
+				},
+			},
+		},
+		MuiListItemText: {
+			styleOverrides: {
+				primary: {
+					marginLeft: spacing * 3,
+					".MuiDrawer-collapsed &": {
+						display: "none",
+					},
+				},
+			},
+		},
 	};
 	return components;
 }
@@ -103,10 +110,16 @@ function buildComponents() {
 const paletteDark: PaletteOptions = {
 	mode: "dark",
 	primary: {
-		main: teal[300],
+		main: cyan[500],
 	},
 	secondary: {
-		main: lightBlue[500],
+		main: deepOrange[300],
+	},
+	error: {
+		main: red[300],
+	},
+	warning: {
+		main: orange[500],
 	},
 	background: {
 		default: blueGrey[900],
@@ -116,10 +129,16 @@ const paletteDark: PaletteOptions = {
 const paletteLight: PaletteOptions = {
 	mode: "light",
 	primary: {
-		main: deepPurple[500],
+		main: cyan[700],
 	},
 	secondary: {
-		main: blue[500],
+		main: deepOrange[600],
+	},
+	error: {
+		main: red[500],
+	},
+	warning: {
+		main: orange[800],
 	},
 	background: {
 		default: blueGrey[50],

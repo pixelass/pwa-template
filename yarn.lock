@@ -2935,6 +2935,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lottiefiles/react-lottie-player@npm:^3.4.7":
+  version: 3.4.7
+  resolution: "@lottiefiles/react-lottie-player@npm:3.4.7"
+  dependencies:
+    lottie-web: ^5.7.8
+  peerDependencies:
+    react: 16 - 18
+  checksum: cffabececafbe3cbf09b54c5d2c45fdeed32cf7156fa5cae1ba2f4218048cbef239c23ed19e36b94a1b4b41c4518f77269865b9f7111ab2f4bf1ba2b59f4ef76
+  languageName: node
+  linkType: hard
+
 "@mdx-js/mdx@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/mdx@npm:1.6.22"
@@ -3043,6 +3054,36 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 8d2f66c094c39ed66b4d2581e8cc9e97a89e15793d0a768869a4b8d01ee6ff2adbbd10761bcafc14dad640c7a51a550a85cdf5f195373afb317afb5e82dce6e5
+  languageName: node
+  linkType: hard
+
+"@mui/lab@npm:5.0.0-alpha.103":
+  version: 5.0.0-alpha.103
+  resolution: "@mui/lab@npm:5.0.0-alpha.103"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+    "@mui/base": 5.0.0-alpha.101
+    "@mui/system": ^5.10.9
+    "@mui/types": ^7.2.0
+    "@mui/utils": ^5.10.9
+    clsx: ^1.2.1
+    prop-types: ^15.8.1
+    react-is: ^18.2.0
+  peerDependencies:
+    "@emotion/react": ^11.5.0
+    "@emotion/styled": ^11.3.0
+    "@mui/material": ^5.0.0
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/react":
+      optional: true
+    "@emotion/styled":
+      optional: true
+    "@types/react":
+      optional: true
+  checksum: 9c37f9f5ac12253e848a6589516bf49b60a1a3fc6e0963ab28ed4784214d720b00c694543826cf27f402529abbb36365e402422f2fa29302d9b9e31890a5f5ee
   languageName: node
   linkType: hard
 
@@ -5404,6 +5445,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
+  languageName: node
+  linkType: hard
+
+"@types/content-type@npm:^1.1.3":
+  version: 1.1.5
+  resolution: "@types/content-type@npm:1.1.5"
+  checksum: 77d0a88003c18c4d75f8344c678545aa1f1a4c163420c38bf669ba05eb9e0a243ecd022b2c83fbd01def608c275743000c0bf37e9ac95e16f2c3af16ec70534b
   languageName: node
   linkType: hard
 
@@ -9328,7 +9376,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"content-type@npm:~1.0.4":
+"content-type@npm:^1.0.4, content-type@npm:~1.0.4":
   version: 1.0.4
   resolution: "content-type@npm:1.0.4"
   checksum: 3d93585fda985d1554eca5ebd251994327608d2e200978fdbfba21c0c679914d5faf266d17027de44b34a72c7b0745b18584ecccaa7e1fdfb6a68ac7114f12e0
@@ -16365,6 +16413,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lottie-web@npm:^5.7.8":
+  version: 5.9.6
+  resolution: "lottie-web@npm:5.9.6"
+  checksum: aed6a1d0c24eefb6c42a42aae18f29737746551cfdc86319f1b9675f5bc276ba26971e8d2b0e1498df880571fe4bfe2fc87885a1d4f8a318d5e4e5b939b7a474
+  languageName: node
+  linkType: hard
+
 "loud-rejection@npm:^1.0.0":
   version: 1.6.0
   resolution: "loud-rejection@npm:1.6.0"
@@ -19361,8 +19416,10 @@ __metadata:
     "@emotion/styled": 11.10.4
     "@graphql-yoga/node": 2.13.13
     "@jest/globals": ^29.2.0
+    "@lottiefiles/react-lottie-player": ^3.4.7
     "@mdx-js/react": ^2.1.5
     "@mui/icons-material": 5.10.9
+    "@mui/lab": 5.0.0-alpha.103
     "@mui/material": 5.10.9
     "@panva/hkdf": ^1.0.2
     "@plaiceholder/next": ^2.5.0
@@ -19446,6 +19503,7 @@ __metadata:
     swr: 2.0.0-rc.0
     type-fest: ^3.1.0
     typescript: ^4.8.4
+    unsplash-js: 7.0.15
     webpack: ^5.74.0
     yaml: ^2.1.3
     zustand: 4.1.2
@@ -23317,6 +23375,16 @@ __metadata:
     has-value: ^0.3.1
     isobject: ^3.0.0
   checksum: 5990ecf660672be2781fc9fb322543c4aa592b68ed9a3312fa4df0e9ba709d42e823af090fc8f95775b4cd2c9a5169f7388f0cec39238b6d0d55a69fc2ab6b29
+  languageName: node
+  linkType: hard
+
+"unsplash-js@npm:7.0.15":
+  version: 7.0.15
+  resolution: "unsplash-js@npm:7.0.15"
+  dependencies:
+    "@types/content-type": ^1.1.3
+    content-type: ^1.0.4
+  checksum: 814ede385e21df948ca502757c4ee8fb4289e959ba1de3c3daa9635e01708d1496d4efcecdce71d0ba95c80f046430ee0a3a8ae8a8c0af5ccc73c3dd3951faad
   languageName: node
   linkType: hard
 

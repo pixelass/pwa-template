@@ -1,7 +1,14 @@
+import { useEffect } from "react";
+
 import InstallPrompt from ".";
 
+import { useStore } from "@/ions/store";
+
 function Template({ open }) {
-	return <InstallPrompt open={open} />;
+	useEffect(() => {
+		useStore.getState().set({ installPromptOpen: open });
+	}, [open]);
+	return <InstallPrompt />;
 }
 export const Default = Template.bind({});
 

@@ -1,4 +1,9 @@
 {
   "dashboard": "Dashboard",
-  "profile": "Profil"
+  "fullArea": "Volle Fläche",
+  "home": "Startseite",
+  "notifications": "Mitteilungen",
+  "palette": "Palette",
+  "profile": "Profil",
+  "theme": "Theme"
 }
