@@ -44,7 +44,14 @@ async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginC
 }
 
 export default defineConfig({
-	retries: 0,
+	retries: {
+		// Configure retry attempts for `cypress run`
+		// Default is 0
+		runMode: 1,
+		// Configure retry attempts for `cypress open`
+		// Default is 0
+		openMode: 0,
+	},
 	e2e: {
 		baseUrl: "http://localhost:3000",
 		specPattern: "cypress/**/*.feature",
