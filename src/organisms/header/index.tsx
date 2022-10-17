@@ -98,10 +98,10 @@ export default function Header() {
 						onClose={handleCloseUserMenu}
 					>
 						<MenuItem
+							component="button"
 							data-cy="user-menu:signOut"
 							onClick={async () => {
-								await signOut();
-								handleCloseUserMenu();
+								void signOut();
 							}}
 						>
 							<Typography textAlign="center">{t("common:signOut")}</Typography>
