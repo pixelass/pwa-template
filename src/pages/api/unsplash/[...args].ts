@@ -1,23 +1,27 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { searchPhotos, UnsplashQuery } from "@/ions/api/unsplash";
+import { searchPhotos } from "@/ions/api/unsplash";
 
-export default function handler(request: NextApiRequest, response: NextApiResponse) {
+export default async function handler(request: NextApiRequest, response: NextApiResponse) {
 	const path_ = (request.query.args as string[]).join("/");
-	const query: UnsplashQuery = {
-		query: request.query.query as string,
-		page: request.query.page as string | undefined,
-		per_page: request.query.per_page as string | undefined,
-	};
+
 	switch (path_) {
 		case "search/photos":
-			searchPhotos(query)
-				.then(data => {
-					response.status(200).json(data.response);
-				})
-				.catch(() => {
-					response.status(500).end();
+			try {
+				const data = await searchPhotos({
+					query: request.query.query as string,
+					page: request.query.page as string | undefined,
+					per_page: request.query.per_page as string | undefined,
 				});
+				if (data.status === 200) {
+					response.status(200).json(data.response);
+				} else {
+					response.status(data.status).json(data.errors);
+				}
+			} catch (error) {
+				response.status(500).json(error.message);
+			}
+
 			break;
 		default:
 			response.status(404).send("NOT_FOUND");
