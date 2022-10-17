@@ -4,6 +4,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 
 import Grid from "@/organisms/grid";
 import Column from "@/organisms/grid/column";
@@ -21,7 +22,17 @@ export default function Template() {
 				<Column xs={4}>
 					<Card>
 						<CardHeader
-							avatar={<Avatar src={session.user.image} alt={session.user.name} />}
+							avatar={
+								<Avatar>
+									<Image
+										src={session.user.image}
+										alt={session.user.name}
+										layout="fill"
+										objectFit="cover"
+										objectPosition="center"
+									/>
+								</Avatar>
+							}
 							title={session.user.name}
 							subheader={session.user.email}
 						/>

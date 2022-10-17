@@ -21,6 +21,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import clsx from "clsx";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { Fragment, useMemo } from "react";
 
@@ -60,8 +61,6 @@ export function DrawerContent({ withTooltips, onNavigate }: DrawerContentProps) 
 			{pathname === "/profile" && (
 				<Box sx={{ px: 1 }}>
 					<Avatar
-						src={session.user.image}
-						alt={session.user.name}
 						sx={theme => ({
 							height: {
 								xs: theme.spacing(32),
@@ -72,7 +71,15 @@ export function DrawerContent({ withTooltips, onNavigate }: DrawerContentProps) 
 								md: drawerExpanded ? theme.spacing(32) : theme.spacing(8),
 							},
 						})}
-					/>
+					>
+						<Image
+							src={session.user.image}
+							alt={session.user.name}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					</Avatar>
 					<Divider sx={{ mt: 2 }} />
 				</Box>
 			)}
