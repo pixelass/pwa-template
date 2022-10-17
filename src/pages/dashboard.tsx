@@ -35,7 +35,6 @@ const IMAGES_QUERY = /* GraphQL */ `
 			}
 			height
 			width
-			base64
 		}
 	}
 `;

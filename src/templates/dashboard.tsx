@@ -66,8 +66,6 @@ export default function Template({ data }: Props) {
 						>
 							<Image
 								src={image.urls.full}
-								blurDataURL={image.base64}
-								placeholder="blur"
 								layout="fill"
 								objectFit="cover"
 								objectPosition="center"
