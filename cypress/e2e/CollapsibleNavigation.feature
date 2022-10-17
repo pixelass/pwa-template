@@ -1,4 +1,4 @@
-Feature: Navigation
+Feature: Collapsible Navigation
 
 	As a user,
 	I want a collapsible navigation,

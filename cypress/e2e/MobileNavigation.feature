@@ -1,4 +1,4 @@
-Feature: Navigation
+Feature: Mobile Navigation
 
 	As a user,
 	I want a toggleable mobile navigation,
