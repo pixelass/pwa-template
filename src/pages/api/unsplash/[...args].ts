@@ -13,11 +13,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 					page: request.query.page as string | undefined,
 					per_page: request.query.per_page as string | undefined,
 				});
-				if (data.status === 200) {
-					response.status(200).json(data.response);
-				} else {
-					response.status(data.status).json(data.errors);
-				}
+				response.status(200).json(data);
 			} catch (error) {
 				response.status(500).json(error.message);
 			}

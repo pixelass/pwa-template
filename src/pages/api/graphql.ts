@@ -77,7 +77,6 @@ const typeDefs = /* GraphQL */ `
 		height: Int!
 		color: String!
 		blur_hash: String!
-		base64: String!
 		description: String
 		alt_description: String
 		urls: ImageUrls!

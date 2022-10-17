@@ -16,9 +16,10 @@ export async function searchPhotos(query_: UnsplashQuery) {
 		accessKey: process.env.UNSPLASH_ACCESS_KEY,
 	});
 
-	return serverApi.search.getPhotos({
+	const data = await serverApi.search.getPhotos({
 		query,
 		page,
 		perPage,
 	});
+	return data.response.results;
 }

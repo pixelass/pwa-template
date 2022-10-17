@@ -1,7 +1,6 @@
 /// @ts-check
 import process from "node:process";
 
-import { withPlaiceholder } from "@plaiceholder/next";
 import { withSentryConfig } from "@sentry/nextjs";
 import nextPWA from "next-pwa";
 import runtimeCaching from "next-pwa/cache.js";
@@ -67,4 +66,4 @@ const config = {
 	},
 };
 
-export default withPlugins([withSentry, withPlaiceholder, withPWA, withTM], config);
+export default withPlugins([withSentry, withPWA, withTM], config);

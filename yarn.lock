@@ -3434,16 +3434,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@plaiceholder/next@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@plaiceholder/next@npm:2.5.0"
-  peerDependencies:
-    next: ">= 10.0.0"
-    sharp: ">= 0.30.6"
-  checksum: a10ffc75d5190638a7a2e5b0372a675f00a4b7afc49080fc258590e48771a4521558199a7a16bd2738d4873249450a26d398c1fec7dae3b521061af95a4ea693
-  languageName: node
-  linkType: hard
-
 "@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.3":
   version: 0.5.7
   resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.7"
@@ -7852,13 +7842,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"blurhash@npm:1.1.5":
-  version: 1.1.5
-  resolution: "blurhash@npm:1.1.5"
-  checksum: 8a647024948552e7250d4f123a0dc2a56941be476811c1c999b182cde01e6e15cc6938a8c523f1a2fea8c0dc12c1fffc1cf2001b86683e196bed03e88e176af2
-  languageName: node
-  linkType: hard
-
 "bn.js@npm:^4.0.0, bn.js@npm:^4.1.0, bn.js@npm:^4.11.9":
   version: 4.12.0
   resolution: "bn.js@npm:4.12.0"
@@ -9004,13 +8987,6 @@ __metadata:
   dependencies:
     is-regexp: ^2.0.0
   checksum: 3624905a98920ad5c196080f4ea4379fa42b12f3b1d1272d958bb79c194508d2aec85160c25846f0016ca861a064316b213a565cf53b81a513047f89cf877803
-  languageName: node
-  linkType: hard
-
-"clone@npm:2.x":
-  version: 2.1.2
-  resolution: "clone@npm:2.1.2"
-  checksum: aaf106e9bc025b21333e2f4c12da539b568db4925c0501a1bf4070836c9e848c892fa22c35548ce0d1132b08bbbfa17a00144fe58fccdab6fa900fec4250f67d
   languageName: node
   linkType: hard
 
@@ -10820,7 +10796,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"encoding@npm:0.1.13, encoding@npm:^0.1.13":
+"encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
   dependencies:
@@ -14012,7 +13988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"image-size@npm:1.0.2, image-size@npm:^1.0.0":
+"image-size@npm:^1.0.0":
   version: 1.0.2
   resolution: "image-size@npm:1.0.2"
   dependencies:
@@ -17548,15 +17524,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-cache@npm:5.1.2":
-  version: 5.1.2
-  resolution: "node-cache@npm:5.1.2"
-  dependencies:
-    clone: 2.x
-  checksum: b0bdd81a6fee4754fb984a05246b510bb35dc54721116d465899bf4229ee3287fdafb47da526900ee9924fb402ed5c7d8050049d37d8bf2d26dbafc23a2c3205
-  languageName: node
-  linkType: hard
-
 "node-dir@npm:^0.1.10":
   version: 0.1.17
   resolution: "node-dir@npm:0.1.17"
@@ -18727,21 +18694,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plaiceholder@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "plaiceholder@npm:2.5.0"
-  dependencies:
-    blurhash: 1.1.5
-    encoding: 0.1.13
-    image-size: 1.0.2
-    node-cache: 5.1.2
-    node-fetch: 2.6.7
-  peerDependencies:
-    sharp: ">= 0.30.6"
-  checksum: 8fde0744094abdf1db33fba647669836a0a7069f150524a75b104f1c76e7c61766a85e1eb693430c0bf291709f9becf596a8ab483d240ce22a668e6ab5c5e64e
-  languageName: node
-  linkType: hard
-
 "pluralize@npm:^8.0.0":
   version: 8.0.0
   resolution: "pluralize@npm:8.0.0"
@@ -19430,7 +19382,6 @@ __metadata:
     "@mui/lab": 5.0.0-alpha.103
     "@mui/material": 5.10.9
     "@panva/hkdf": ^1.0.2
-    "@plaiceholder/next": ^2.5.0
     "@sentry/nextjs": ^7.15.0
     "@storybook/addon-actions": ^6.5.12
     "@storybook/addon-essentials": ^6.5.12
@@ -19491,7 +19442,6 @@ __metadata:
     next-transpile-modules: ^9.1.0
     ora: ^6.1.2
     path-browserify: ^1.0.1
-    plaiceholder: ^2.5.0
     prettier: ^2.7.1
     react: 18.2.0
     react-dom: 18.2.0

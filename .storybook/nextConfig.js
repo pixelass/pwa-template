@@ -1,5 +1,4 @@
 /// @ts-check
-const { withPlaiceholder } = require("@plaiceholder/next");
 const transpileModules = require("next-transpile-modules");
 
 const i18next = require("../next-i18next.config.js");
@@ -38,4 +37,4 @@ const config = {
 	},
 };
 
-module.exports = withPlugins([withPlaiceholder, withTM], config);
+module.exports = withPlugins([withTM], config);

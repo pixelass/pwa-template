@@ -16,12 +16,8 @@ import { Basic } from "unsplash-js/src/methods/photos/types";
 import Masonry from "@/organisms/grid/masonry";
 import LayoutWide from "@/organisms/layout/wide";
 
-export interface ImageType extends Basic {
-	base64: string;
-}
-
 export interface Props {
-	data: { images: ImageType[] };
+	data: { images: Basic[] };
 	isLoading?: boolean;
 }
 
