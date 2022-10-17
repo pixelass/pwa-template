@@ -38,6 +38,7 @@ jobs:
           build: yarn build
           start: yarn start
           record: true
+          browser: chrome
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_BASE_URL: "http://localhost:3000"
