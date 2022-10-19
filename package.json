@@ -16,7 +16,7 @@
     "build:test": "yarn favicons && yarn dlx cross-env@7 NODE_ENV=test next build",
     "cypress": "yarn dlx cypress@10 open --e2e",
     "cypress:run": "yarn dlx cypress@10 run",
-    "cypress:record": "yarn dlx env-cmd -f '/.env.local' yarn dlx cypress@10 run --record",
+    "cypress:record": "yarn dlx env-cmd -f '.env.local' yarn dlx cypress@10 run --record",
     "dev": "yarn favicons && next dev",
     "eslint": "eslint '{**/*,*}{.,.config.}{js,mjs,ts,tsx}'",
     "eslint:fix": "yarn eslint --fix",
