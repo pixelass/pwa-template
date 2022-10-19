@@ -49,6 +49,7 @@ const config = {
 	i18n: i18next.i18n,
 	reactStrictMode: true,
 	swcMinify: true,
+	productionBrowserSourceMaps: false,
 	compiler: {
 		// Allows to remove JSX properties. This is often used for testing.
 		// Similar to babel-plugin-react-remove-properties.
@@ -63,6 +64,9 @@ const config = {
 			},
 		],
 		formats: ["image/webp"],
+	},
+	sentry: {
+		hideSourceMaps: true,
 	},
 };
 
