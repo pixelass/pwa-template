@@ -50,51 +50,12 @@ Additional libraries:
 
 ## Personalize this template
 
-### Automatic (recommended)
-
 Adjust the information in [pwa.config.mjs](./pwa.config.mjs).
 
-You can use the `setup` script by running:
-
-```shell
-yarn run setup
-```
-
-A prompt will guide you through the setup and adjust all files accordingly.  
-After the setup all setup related configuration and files can be removed automatically.
-
-### Manual
-
-> :warning: Warning
->
-> We suggest using the automatic setup instead.
-
-<details>
-<summary>View the manual steps</summary>
-
-You can adjust the template by searching for `/pwa[ -]template/i`. It should find all instances of
-"pwa-template" or "PWA Template". Additionally, you should adjust the colors (`theme_color` and
-`background_color`) in `public/manifest.json`.
-
-Adjust the name in the LICENSE file.
-
-**We also advise to remove all setup related configuration and files:**
-
-- Remove `scripts.setup` in from `package.json`
-- Remove `devDependencies.boxen` in from `package.json`
-- Remove `devDependencies.chalk` in from `package.json`
-- Remove `devDependencies.execa` in from `package.json`
-- Remove `devDependencies.inquirer` in from `package.json`
-- Remove `devDependencies.ora` in from `package.json`
-- Delete the file `scripts/setup.mjs`.
-
-**Here's a list of all files that should be adjusted:**
+Adjust these files:
 
 - `LICENSE`
 - `package.json`
-- `scripts/setup.mjs` (deleted)
-
-</details>
 
 ## Project Setup
 
@@ -111,9 +72,7 @@ Please follow this guide: https://vercel.com/docs/concepts/git
 
 #### App
 
-1. The "Project Name" should match what you entered when you
-   [personalized this template](#personalize-this-template).
-2. Follow the default setup for Next.js.
+1. Follow the default setup for Next.js.
 
 #### Storybook
 
@@ -131,7 +90,7 @@ Especially the
 section
 
 Everything is already set up. You need to add the correct environmental variables (See
-[`.env.local.example`](.env.local.example))
+[`.env.local.example`](.env.local.example)).
 
 ## Getting started
 
