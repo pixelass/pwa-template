@@ -7,7 +7,6 @@ import chalk from "chalk";
 import { execa } from "execa";
 import inquirer from "inquirer";
 import ora from "ora";
-import YAML from "yaml";
 
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -17,16 +16,13 @@ export const files = {
 	pkg: path.join(__dirname, "../package.json"),
 	license: path.join(__dirname, "../LICENSE"),
 	_document: path.join(__dirname, "../src/pages/_document.tsx"),
-	runCypress: path.join(__dirname, "../.github/workflows/Run_Cypress.yml"),
 };
 
 async function getFiles() {
 	const pkg = JSON.parse(await readFile(files.pkg, "utf-8"));
-	const runCypress = YAML.parse(await readFile(files.runCypress, "utf-8"));
 	const license = await readFile(files.license, "utf-8");
 	return {
 		json: { pkg },
-		yml: { runCypress },
 		plain: { license },
 	};
 }
@@ -37,7 +33,6 @@ async function setup(write = true) {
 	try {
 		const {
 			json: { pkg },
-			yml: { runCypress },
 			plain: { license },
 		} = await getFiles();
 
@@ -66,10 +61,6 @@ async function setup(write = true) {
 		spinner.text = "Modifying files…";
 		spinner.start();
 
-		// Adjust the condition if the cypress tests should run.
-		// Cypress should only run for preview deployments of the main project (App).
-		runCypress.jobs.test.if = `github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview – ${projectName}'`;
-
 		// Adjust package.json
 		// Set name and author
 		pkg.name = projectName;
@@ -85,10 +76,8 @@ async function setup(write = true) {
 		if (write) {
 			// Write modified files
 			await writeFile(files.license, license_);
-			await writeFile(files.runCypress, YAML.stringify(runCypress, null, 2));
 		} else {
 			console.log(files.license, license_);
-			console.log(files.runCypress, YAML.stringify(runCypress, null, 2));
 		}
 		spinner.succeed("The project setup is done.");
 
@@ -111,7 +100,6 @@ async function setup(write = true) {
 			delete pkg.devDependencies.execa;
 			delete pkg.devDependencies.inquirer;
 			delete pkg.devDependencies.ora;
-			delete pkg.devDependencies.yaml;
 
 			if (write) {
 				await writeFile(files.pkg, JSON.stringify(pkg, null, 2));

@@ -76,6 +76,8 @@ You can adjust the template by searching for `/pwa[ -]template/i`. It should fin
 "pwa-template" or "PWA Template". Additionally, you should adjust the colors (`theme_color` and
 `background_color`) in `public/manifest.json`.
 
+Adjust the name in the LICENSE file.
+
 **We also advise to remove all setup related configuration and files:**
 
 - Remove `scripts.setup` in from `package.json`
@@ -84,15 +86,11 @@ You can adjust the template by searching for `/pwa[ -]template/i`. It should fin
 - Remove `devDependencies.execa` in from `package.json`
 - Remove `devDependencies.inquirer` in from `package.json`
 - Remove `devDependencies.ora` in from `package.json`
-- Remove `devDependencies.yaml` in from `package.json`
-- Adjust `- if: …` in `.github/workflows/Run_Cypress.yml` to end with
-  `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}`
-  is the name of the Vercel project.
 - Delete the file `scripts/setup.mjs`.
 
 **Here's a list of all files that should be adjusted:**
 
-- `.github/workflows/Run_Cypress.yml`
+- `LICENSE`
 - `package.json`
 - `scripts/setup.mjs` (deleted)
 
