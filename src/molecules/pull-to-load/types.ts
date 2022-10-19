@@ -1,5 +1,5 @@
-import { Theme } from "@mui/material";
-import { ResponsiveStyleValue, SystemStyleObject } from "@mui/system";
+import { Theme } from "@mui/material/styles/createTheme";
+import { ResponsiveStyleValue, SystemStyleObject } from "@mui/system/styleFunctionSx";
 import { Property } from "csstype";
 
 export interface PullToRefreshProps {
