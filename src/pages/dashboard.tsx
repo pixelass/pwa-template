@@ -31,7 +31,7 @@ const IMAGES_QUERY = /* GraphQL */ `
 				}
 			}
 			urls {
-				full
+				small
 			}
 			height
 			width

@@ -61,7 +61,7 @@ export default function Template({ data }: Props) {
 							sx={{ position: "relative", height: image.height / 10, m: 0 }}
 						>
 							<Image
-								src={image.urls.full}
+								src={image.urls.small}
 								layout="fill"
 								objectFit="cover"
 								objectPosition="center"
