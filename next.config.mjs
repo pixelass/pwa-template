@@ -65,6 +65,9 @@ const config = {
 		],
 		formats: ["image/webp"],
 	},
+	sentry: {
+		hideSourceMaps: true,
+	},
 };
 
 export default withPlugins([withSentry, withPWA, withTM], config);
