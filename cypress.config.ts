@@ -2,6 +2,8 @@ import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-prepro
 import webpack from "@cypress/webpack-preprocessor";
 import { defineConfig } from "cypress";
 import * as Cypress from "cypress";
+import { config } from "dotenv";
+config({ path: ".env.local" });
 
 async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
 	await addCucumberPreprocessorPlugin(on, config);
@@ -42,10 +44,20 @@ async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginC
 }
 
 export default defineConfig({
-	retries: 0,
+	retries: {
+		// Configure retry attempts for `cypress run`
+		// Default is 0
+		runMode: 1,
+		// Configure retry attempts for `cypress open`
+		// Default is 0
+		openMode: 0,
+	},
 	e2e: {
 		baseUrl: "http://localhost:3000",
 		specPattern: "cypress/**/*.feature",
 		setupNodeEvents,
+	},
+	env: {
+		NEXT_AUTH_SECRET: process.env.NEXT_AUTH_SECRET,
 	},
 });

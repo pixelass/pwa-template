@@ -1,6 +1,7 @@
 /// @ts-check
 import process from "node:process";
 
+import { withSentryConfig } from "@sentry/nextjs";
 import nextPWA from "next-pwa";
 import runtimeCaching from "next-pwa/cache.js";
 import transpileModules from "next-transpile-modules";
@@ -8,6 +9,7 @@ import transpileModules from "next-transpile-modules";
 import i18next from "./next-i18next.config.js";
 
 const withTM = transpileModules(["@mui/material"]); // Pass the modules you would like to see transpiled
+
 const withPWA = nextPWA({
 	disable: process.env.NODE_ENV === "development",
 	dest: "public",
@@ -16,6 +18,29 @@ const withPWA = nextPWA({
 	runtimeCaching,
 	buildExcludes: [/middleware-manifest.json$/],
 });
+
+/**
+ *  Make sentry compatible for plugin composer
+ * @param nextConfig
+ * @returns {import('next').NextConfigFunction |import('next').NextConfigObject}
+ */
+function withSentry(nextConfig) {
+	return withSentryConfig(nextConfig, {
+		silent: true,
+		dryRun: process.env.VERCEL_ENV !== "production",
+	});
+}
+
+/**
+ *
+ * @param plugins
+ * @param {import('next').NextConfig} nextConfig
+ * @returns {import('next').NextConfigObject}
+ */
+function withPlugins(plugins, nextConfig) {
+	return plugins.reduce((previousValue, currentValue) => currentValue(previousValue), nextConfig);
+}
+
 /**
  *
  * @type {import('next').NextConfig} config
@@ -25,8 +50,20 @@ const config = {
 	reactStrictMode: true,
 	swcMinify: true,
 	compiler: {
-		reactRemoveProperties: true,
+		// Allows to remove JSX properties. This is often used for testing.
+		// Similar to babel-plugin-react-remove-properties.
+		// To remove properties matching the default regex ^data-test:
+		// reactRemoveProperties: true,
+	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "images.unsplash.com",
+			},
+		],
+		formats: ["image/webp"],
 	},
 };
 
-export default withTM(withPWA(config));
+export default withPlugins([withSentry, withPWA, withTM], config);

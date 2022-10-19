@@ -1,7 +1,8 @@
 import { Except } from "type-fest";
 
 export interface StoreModel {
-	count: number;
-
-	set(modal: Except<StoreModel, "set">): void;
+	drawerOpen: boolean;
+	drawerExpanded: boolean;
+	installPromptOpen: boolean;
+	set(partial: Partial<Except<StoreModel, "set">>): void;
 }

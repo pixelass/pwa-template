@@ -1,3 +1,13 @@
 {
+  "add": "Add",
+  "back": "Back",
+  "close": "Close",
+  "collapse": "Collapse",
+  "copy": "Copy",
+  "expand": "Expand",
+  "ok": "OK",
+  "open": "Open",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
   "up": "Up"
 }

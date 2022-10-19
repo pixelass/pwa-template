@@ -1,17 +1,13 @@
 name: Run Cypress
 
-on: [deployment_status]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - "**"
 
 jobs:
-  log:
-    name: Get Environment
-    runs-on: ubuntu-20.04
-    steps:
-      - name: --- Environment -------------------
-        run: echo ${{github.event.deployment_status.environment}}
-
   test:
-    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview – pwa-template'
     name: Run Cypress
     runs-on: ubuntu-20.04
     steps:
@@ -38,5 +34,22 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - uses: cypress-io/github-action@v4
+        with:
+          build: yarn build
+          start: yarn start
+          record: true
+          browser: chrome
         env:
-          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_BASE_URL: "http://localhost:3000"
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          NEXT_AUTH_SECRET: this-is-a-secret
+          NEXTAUTH_URL: "http://localhost:3000"
+          DEMO_USERNAME: ${{ secrets.DEMO_USERNAME }}
+          DEMO_PASSWORD: ${{ secrets.DEMO_PASSWORD }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          UNSPLASH_SECRET_KEY: ${{ secrets.UNSPLASH_SECRET_KEY }}

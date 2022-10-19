@@ -1,0 +1,32 @@
+{
+  "auth": {
+    "error": {
+      "description": "Error",
+      "title": "Error"
+    },
+    "newUser": {
+      "description": "Welcome",
+      "title": "Welcome"
+    },
+    "signIn": {
+      "description": "Sign in",
+      "title": "Sign in"
+    },
+    "signOut": {
+      "description": "Sign out",
+      "title": "Sign out"
+    },
+    "verifyRequest": {
+      "description": "Verify request",
+      "title": "Verify request"
+    }
+  },
+  "dashboard": {
+    "description": "Dashboard",
+    "title": "Dashboard"
+  },
+  "profile": {
+    "description": "Profile",
+    "title": "Profile"
+  }
+}

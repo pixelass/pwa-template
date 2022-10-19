@@ -1,14 +1,23 @@
 import { GetServerSideProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
-import Home from "@/templates/home";
+import { getSession } from "next-auth/react";
 
 export default function Page() {
-	return <Home />;
+	return null;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
-	props: {
-		...(await serverSideTranslations(locale, ["common"])),
-	},
-});
+export const getServerSideProps: GetServerSideProps = async context => {
+	const session = await getSession({ ctx: context });
+	return session
+		? {
+				redirect: {
+					destination: "/dashboard",
+					permanent: false,
+				},
+		  }
+		: {
+				redirect: {
+					destination: "/auth/sign-in",
+					permanent: false,
+				},
+		  };
+};

@@ -32,6 +32,7 @@ A template for Next.js with PWA support and i18n.
 
 - [Storybook](https://storybook.js.org/)
 - [Cypress](https://cypress.io/)
+- [Sentry](https://sentry.io/)
 - [Jest](https://jestjs.io/)
 - [Commitlint](https://commitlint.js.org/)
 - [Stylelint](https://stylelint.io/)
@@ -41,11 +42,17 @@ A template for Next.js with PWA support and i18n.
 Additional libraries:
 
 - [MUI](https://mui.com/)
-- [i18next](https://www.i18next.com/) ([next-i18next](https://github.com/isaachinman/next-i18next))
+- [i18next](https://www.i18next.com/) (via
+  [next-i18next](https://github.com/isaachinman/next-i18next))
+- [Next Auth](https://next-auth.js.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
 
 ## Personalize this template
 
 ### Automatic (recommended)
+
+Adjust the information in [pwa.config.mjs](./pwa.config.mjs).
 
 You can use the `setup` script by running:
 
@@ -55,8 +62,6 @@ yarn run setup
 
 A prompt will guide you through the setup and adjust all files accordingly.  
 After the setup all setup related configuration and files can be removed automatically.
-
-<p align="center"><img src="./docs/resources/setup.svg" alt="next logo" width="600"/></p>
 
 ### Manual
 
@@ -71,29 +76,23 @@ You can adjust the template by searching for `/pwa[ -]template/i`. It should fin
 "pwa-template" or "PWA Template". Additionally, you should adjust the colors (`theme_color` and
 `background_color`) in `public/manifest.json`.
 
+Adjust the name in the LICENSE file.
+
 **We also advise to remove all setup related configuration and files:**
 
 - Remove `scripts.setup` in from `package.json`
 - Remove `devDependencies.boxen` in from `package.json`
 - Remove `devDependencies.chalk` in from `package.json`
-- Remove `devDependencies.fullname` in from `package.json`
+- Remove `devDependencies.execa` in from `package.json`
 - Remove `devDependencies.inquirer` in from `package.json`
 - Remove `devDependencies.ora` in from `package.json`
-- Remove `devDependencies.yaml` in from `package.json`
-- Adjust `- if: …` in `.github/workflows/Run_Cypress.yml` to end with
-  `github.event.deployment_status.environment == 'Preview – {project-name}'` where `{project-name}`
-  is the name of the Vercel project.
-- Delete the directory `scripts`.
+- Delete the file `scripts/setup.mjs`.
 
 **Here's a list of all files that should be adjusted:**
 
-- `.github/workflows/Run_Cypress.yml`
+- `LICENSE`
 - `package.json`
-- `public/manifest.json`
-- `src/pages/_app.tsx`
-- `/src/pages/_document.tsx`
-- `src/ions/configs/emotion.ts`
-- `scripts` (deleted)
+- `scripts/setup.mjs` (deleted)
 
 </details>
 
@@ -123,6 +122,16 @@ Please follow this guide: https://vercel.com/docs/concepts/git
    - OUTPUT DIRECTORY: `./storybook-static`
 
 <p align="center"><img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/></p>
+
+## Setup Sentry
+
+Please look at [the guide](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/).
+Especially the
+[configuration](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#configure-sentry-cli)
+section
+
+Everything is already set up. You need to add the correct environmental variables (See
+[`.env.local.example`](.env.local.example))
 
 ## Getting started
 

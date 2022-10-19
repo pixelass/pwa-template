@@ -1,15 +1,21 @@
 import { CacheProvider as EmotionCacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-import { appWithTranslation } from "next-i18next";
+import { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import { appWithTranslation, SSRConfig } from "next-i18next";
+import { AppProps as NextAppProps } from "next/app";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import React, { useMemo } from "react";
 
 import { cache } from "@/ions/configs/emotion";
 import useDarkMode from "@/ions/hooks/dark-mode";
-import useIncreasedContrast from "@/ions/hooks/increased-contrast";
-import { fontFaces, globalStyles } from "@/ions/styles";
-import { dark, darkHighContrast, light, lightHighContrast } from "@/ions/theme";
+import useInstallPrompt from "@/ions/hooks/install-prompt";
+import StoreProvider from "@/ions/store/context";
+import { dark, light } from "@/ions/theme";
+
+const InstallPrompt = dynamic(async () => import("@/organisms/install-prompt"));
 
 // Remove React warning about useLayoutEffect
 // Be careful when using this hook.
@@ -19,41 +25,31 @@ if (typeof window === "undefined") {
 		/**/
 	};
 }
+type AppProps = NextAppProps<{ session: Session | null } & SSRConfig>;
 
-function App({ Component, pageProps }) {
-	const darkMode = useDarkMode();
-	const increasedContrast = useIncreasedContrast();
-	const theme = useMemo(() => {
-		if (darkMode) {
-			return increasedContrast ? darkHighContrast : dark;
-		}
-
-		return increasedContrast ? lightHighContrast : light;
-	}, [darkMode, increasedContrast]);
-
+function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+	const darkMode = useDarkMode(true);
+	const theme = useMemo(() => (darkMode ? dark : light), [darkMode]);
+	const showInstallPrompt = useInstallPrompt();
 	return (
 		<>
-			{fontFaces}
-			{globalStyles}
 			<Head>
-				<title key="title">PWA Template</title>
-				<meta
-					key="description"
-					name="description"
-					content="PWA template with Next.js and MUI"
-				/>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-				<meta name="msapplication-TileColor" content={theme.palette.primary.main} />
 				<meta name="theme-color" content={theme.palette.primary.main} />
 			</Head>
 			<EmotionCacheProvider value={cache}>
 				<MuiThemeProvider theme={theme}>
-					<CssBaseline />
-					<Component {...pageProps} />
+					<SessionProvider session={session}>
+						<StoreProvider>
+							<CssBaseline />
+							<Component {...pageProps} />
+						</StoreProvider>
+					</SessionProvider>
+					{showInstallPrompt && <InstallPrompt />}
 				</MuiThemeProvider>
 			</EmotionCacheProvider>
 		</>
 	);
 }
 
-export default appWithTranslation(App);
+export default appWithTranslation<AppProps>(App);

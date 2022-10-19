@@ -25,7 +25,7 @@ In this example we can see how we can intuitively add a local state to a checkbo
 it.
 
 ```tsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Checkbox = () => {
   const [checked, setChecked] = useState(false);
@@ -59,7 +59,7 @@ when we want to add a default state we can make use of React's
 `defaultChecked` to our component properties.
 
 ```tsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Checkbox = ({ defaultChecked }) => {
   const [checked, setChecked] = useState(defaultChecked);
@@ -96,7 +96,7 @@ Let's [lift the state up](https://reactjs.org/docs/lifting-state-up.html). In ou
 host the state.
 
 ```tsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Checkbox = ({ checked, onChange }) => {
   return (
@@ -143,7 +143,7 @@ machines, in our case we will add a [context](https://reactjs.org/docs/context.h
 state of our feature.
 
 ```tsx
-import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
 const CheckboxContext = createContext();
 
@@ -173,7 +173,6 @@ const CheckpoxProvider = ({ children }) => {
 const useCheckbox = () => useContext(CheckboxContext);
 
 const Checkbox = ({ checked, onChange }) => {
-  const [localChecked, setLocalChecked] = useState(checked);
   return (
     <label>
       <input
@@ -246,7 +245,7 @@ Common names allow us to easily understand how to operate different machines. We
 same machine to open or close a dialog, sidebar or similar. We would then use `open`, `close` and
 `toggle`.
 
-When we want to operate several machines, we can simply rename the in our application or component.
+When we want to operate several machines, we can simply rename the key.
 
 ```tsx
 const { open: openModal, opened: isModalOpen } = useOpen();
