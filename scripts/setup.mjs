@@ -15,7 +15,6 @@ import pwaConfig from "../pwa.config.mjs";
 export const files = {
 	pkg: path.join(__dirname, "../package.json"),
 	license: path.join(__dirname, "../LICENSE"),
-	_document: path.join(__dirname, "../src/pages/_document.tsx"),
 };
 
 async function getFiles() {
