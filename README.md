@@ -52,6 +52,8 @@ Additional libraries:
 
 ### Automatic (recommended)
 
+Adjust the information in [pwa.config.mjs](./pwa.config.mjs).
+
 You can use the `setup` script by running:
 
 ```shell
@@ -60,8 +62,6 @@ yarn run setup
 
 A prompt will guide you through the setup and adjust all files accordingly.  
 After the setup all setup related configuration and files can be removed automatically.
-
-<p align="center"><img src="./docs/resources/setup.svg" alt="next logo" width="600"/></p>
 
 ### Manual
 
