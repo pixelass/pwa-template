@@ -1,5 +1,6 @@
 {
   "*.{mjs,js,ts,tsx},*.config.{mjs,js,ts}": ["eslint --fix", "prettier --write"],
   "./*.json": ["prettier --write"],
-  "*.md": ["prettier --write"]
+  "*.md": ["prettier --write"],
+  "README.md": ["yarn dlx markdown-toc -i"]
 }
