@@ -6,14 +6,12 @@ A template for Next.js with PWA support and i18n.
 
 <h2 align="center">100% Lighthouse score</h2>
 
-<p align="center"><img src="./docs/resources/lighthouse.png" alt="next logo" width="600"/></p>
+<img src="./docs/resources/blank.svg" alt="" width="20%"/><img src="./docs/resources/lighthouse.png" alt="next logo" width="60%"/><img src="./docs/resources/blank.svg" alt="" width="20%"/>
 
 <!-- toc -->
 
 - [Libraries](#libraries)
 - [Personalize this template](#personalize-this-template)
-  - [Automatic (recommended)](#automatic-recommended)
-  - [Manual](#manual)
 - [Project Setup](#project-setup)
   - [Set up Vercel](#set-up-vercel)
     - [App](#app)
@@ -50,7 +48,7 @@ Additional libraries:
 
 ## Personalize this template
 
-Adjust the information in [pwa.config.mjs](./pwa.config.mjs).
+Adjust the information in [pwa.config.mjs](pwa.config.mjs).
 
 Adjust these files:
 
@@ -80,17 +78,20 @@ Please follow this guide: https://vercel.com/docs/concepts/git
    - BUILD COMMAND: `yarn run storybook:build`
    - OUTPUT DIRECTORY: `./storybook-static`
 
-<p align="center"><img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/></p>
+<img src="./docs/resources/blank.svg" alt="" width="20%"/><img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="60%"/><img src="./docs/resources/blank.svg" alt="" width="20%"/>
 
 ## Setup Sentry
 
-Please look at [the guide](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/).
-Especially the
+Please look at [the guide](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/),
+specially the
 [configuration](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#configure-sentry-cli)
-section
+section.
 
-Everything is already set up. You need to add the correct environmental variables (See
+Everything is already set up. You only need to add the correct environmental variables (See
 [`.env.local.example`](.env.local.example)).
+
+To test the integration you can visit the
+[Sentry sample error page](http://localhost:3000/sentry_sample_error).
 
 ## Getting started
 
