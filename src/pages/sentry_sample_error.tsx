@@ -1,8 +1,10 @@
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 import Head from "next/head";
 
-const boxStyles = { padding: "12px", border: "1px solid #eaeaea", borderRadius: "10px" };
-
-export default function Home() {
+export default function SampleError() {
 	return (
 		<div>
 			<Head>
@@ -10,15 +12,7 @@ export default function Home() {
 				<meta name="description" content="Make your Next.js ready for Sentry" />
 			</Head>
 
-			<main
-				style={{
-					minHeight: "100vh",
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
+			<Container component="main">
 				<h1 style={{ fontSize: "4rem" }}>
 					<svg
 						style={{
@@ -34,29 +28,23 @@ export default function Home() {
 					</svg>
 				</h1>
 
-				<p>Get started by sending us a sample error</p>
-				<button
-					type="button"
-					style={{
-						...boxStyles,
-						backgroundColor: "#c73852",
-						borderRadius: "12px",
-						border: "none",
-					}}
+				<Typography my={2}>Get started by sending us a sample error</Typography>
+				<Button
+					variant="contained"
 					onClick={() => {
 						throw new Error("Sentry Frontend Error");
 					}}
 				>
 					Throw error
-				</button>
+				</Button>
 
-				<p>
+				<Typography my={2}>
 					For more information, see{" "}
-					<a href="https://docs.sentry.io/platforms/javascript/guides/nextjs/">
+					<Link href="https://docs.sentry.io/platforms/javascript/guides/nextjs/">
 						https://docs.sentry.io/platforms/javascript/guides/nextjs/
-					</a>
-				</p>
-			</main>
+					</Link>
+				</Typography>
+			</Container>
 		</div>
 	);
 }
