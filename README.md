@@ -12,10 +12,10 @@ A template for Next.js with PWA support and i18n.
 
 - [Libraries](#libraries)
 - [Personalize this template](#personalize-this-template)
-- [Project Setup](#project-setup)
-  - [Set up Vercel](#set-up-vercel)
-    - [App](#app)
-    - [Storybook](#storybook)
+- [Set up Vercel](#set-up-vercel)
+  * [App](#app)
+  * [Storybook](#storybook)
+- [Setup Sentry](#setup-sentry)
 - [Getting started](#getting-started)
 - [Atomic design](#atomic-design)
 - [Behavior Driven Development](#behavior-driven-development)
@@ -55,7 +55,7 @@ Adjust these files:
 - `LICENSE`
 - `package.json`
 
-## Project Setup
+## Set up Vercel
 
 This project uses multiple Vercel deployments to make design/code reviews easier:
 
@@ -64,19 +64,19 @@ This project uses multiple Vercel deployments to make design/code reviews easier
 - Storybook Production
 - Storybook Preview
 
-### Set up Vercel
+Please follow this guide:
+[https://vercel.com/docs/concepts/git](https://vercel.com/docs/concepts/git)
 
-Please follow this guide: https://vercel.com/docs/concepts/git
+### App
 
-#### App
+Follow the default setup for Next.js.
 
-1. Follow the default setup for Next.js.
+### Storybook
 
-#### Storybook
+Adjust the "Build and Output Settings":
 
-1. Adjust the "Build and Output Settings"
-   - BUILD COMMAND: `yarn run storybook:build`
-   - OUTPUT DIRECTORY: `./storybook-static`
+- BUILD COMMAND: `yarn run storybook:build`
+- OUTPUT DIRECTORY: `./storybook-static`
 
 <img src="./docs/resources/blank.svg" alt="" width="20%"/><img src="./docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="60%"/><img src="./docs/resources/blank.svg" alt="" width="20%"/>
 
