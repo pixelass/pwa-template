@@ -27,8 +27,9 @@ import { Fragment, useMemo } from "react";
 
 import { navigation } from "@/ions/configs/navigation";
 import { useStore } from "@/ions/store";
+import { spacing } from "@/ions/theme";
 import NavItem from "@/molecules/nav-item";
-import { DRAWER_WIDTH } from "@/organisms/layout/constants";
+import { DRAWER_WIDTH, DRAWER_WIDTH_MINI, DRAWER_WIDTH_MOBILE } from "@/organisms/layout/constants";
 import { WrapperProps } from "@/organisms/layout/types";
 
 export interface DrawerContentProps {
@@ -61,16 +62,20 @@ export function DrawerContent({ withTooltips, onNavigate }: DrawerContentProps) 
 			{pathname === "/profile" && (
 				<Box sx={{ px: 1 }}>
 					<Avatar
-						sx={theme => ({
+						sx={{
 							height: {
-								xs: theme.spacing(32),
-								md: drawerExpanded ? theme.spacing(32) : theme.spacing(8),
+								xs: DRAWER_WIDTH_MOBILE - spacing * 2,
+								md: drawerExpanded
+									? DRAWER_WIDTH - spacing * 2
+									: DRAWER_WIDTH_MINI - spacing * 2,
 							},
 							width: {
-								xs: theme.spacing(32),
-								md: drawerExpanded ? theme.spacing(32) : theme.spacing(8),
+								xs: DRAWER_WIDTH_MOBILE - spacing * 2,
+								md: drawerExpanded
+									? DRAWER_WIDTH - spacing * 2
+									: DRAWER_WIDTH_MINI - spacing * 2,
 							},
-						})}
+						}}
 					>
 						<Image
 							src={session.user.image}
@@ -114,9 +119,12 @@ export function TemporaryDrawer() {
 			ModalProps={{
 				keepMounted: true,
 			}}
-			sx={{ display: { xs: "block", md: "none" }, width: DRAWER_WIDTH }}
+			sx={{ display: { xs: "block", md: "none" }, width: DRAWER_WIDTH_MOBILE }}
 			PaperProps={
-				{ "data-cy": "sidebar:mobile", sx: { width: DRAWER_WIDTH } } as Partial<PaperProps>
+				{
+					"data-cy": "sidebar:mobile",
+					sx: { width: DRAWER_WIDTH_MOBILE },
+				} as Partial<PaperProps>
 			}
 			onClose={() => {
 				useStore.getState().set({ drawerOpen: false });
@@ -203,7 +211,7 @@ export function PermanentDrawer({ drawerWidth }: PermanentDrawerProps) {
 			<AppBar
 				color="inherit"
 				position="fixed"
-				sx={theme => ({
+				sx={{
 					backgroundClip: "border-box",
 					borderRadius: 0,
 					border: 0,
@@ -211,8 +219,8 @@ export function PermanentDrawer({ drawerWidth }: PermanentDrawerProps) {
 					bottom: 0,
 					left: 0,
 					px: 1,
-					width: theme.spacing(drawerExpanded ? 34 : 10),
-				})}
+					width: (drawerExpanded ? DRAWER_WIDTH : DRAWER_WIDTH_MINI) - 1,
+				}}
 			>
 				<Toolbar>
 					<Tooltip title={drawerExpanded ? t("common:collapse") : t("common:expand")}>
