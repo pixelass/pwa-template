@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -12,6 +14,17 @@ export const authOptions = {
 		error: "/auth/error", // Error code passed in query string as ?error=
 		verifyRequest: "/auth/verify-request", // (used for check email message)
 		newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
+	},
+	callbacks: {
+		async session({ session }) {
+			return {
+				...session,
+				user: {
+					...session.user,
+					// Add additional props
+				},
+			};
+		},
 	},
 	providers: [
 		CredentialsProvider({

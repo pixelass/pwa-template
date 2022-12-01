@@ -70,4 +70,4 @@ const config = {
 	},
 };
 
-export default withPlugins([withSentry, withPWA, withTM], config);
+export default withPlugins([withPWA, withTM, withSentry], config);

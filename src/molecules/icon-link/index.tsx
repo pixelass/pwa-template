@@ -11,7 +11,7 @@ export interface IconLinkProps {
 export default function IconLink({ link }: IconLinkProps) {
 	const { t } = useTranslation(["menu"]);
 	return (
-		<Link passHref href={link.href}>
+		<Link passHref legacyBehavior href={link.href}>
 			<IconButton component="a" color="inherit" aria-label={t(`menu:${link.key}`)}>
 				{link.icon}
 			</IconButton>

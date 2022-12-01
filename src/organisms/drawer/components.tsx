@@ -78,11 +78,10 @@ export function DrawerContent({ withTooltips, onNavigate }: DrawerContentProps) 
 						}}
 					>
 						<Image
+							fill
 							src={session.user.image}
 							alt={session.user.name}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
+							sizes={"300px"}
 						/>
 					</Avatar>
 					<Divider sx={{ mt: 2 }} />

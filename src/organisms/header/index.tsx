@@ -72,12 +72,11 @@ export default function Header() {
 					>
 						<Avatar>
 							<Image
+								fill
 								src={session.user.image}
 								alt={session.user.name}
 								quality={40}
-								layout="fill"
-								objectFit="cover"
-								objectPosition="center"
+								sizes={"80px"}
 							/>
 						</Avatar>
 					</IconButton>

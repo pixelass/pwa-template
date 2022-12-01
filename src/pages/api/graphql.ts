@@ -1,4 +1,4 @@
-import { createServer } from "@graphql-yoga/node";
+import { createSchema, createYoga } from "graphql-yoga";
 
 import { images } from "@/mocks/images";
 
@@ -95,12 +95,12 @@ const resolvers = {
 	},
 };
 
-const server = createServer({
-	schema: {
+const server = createYoga({
+	schema: createSchema({
 		typeDefs,
 		resolvers,
-	},
-	endpoint: "/api/graphql",
+	}),
+	graphqlEndpoint: "/api/graphql",
 	// graphiql: false // uncomment to disable GraphiQL
 });
 

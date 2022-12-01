@@ -61,10 +61,9 @@ export default function Template({ data }: Props) {
 							sx={{ position: "relative", height: image.height / 10, m: 0 }}
 						>
 							<Image
+								fill
 								src={image.urls.small}
-								layout="fill"
-								objectFit="cover"
-								objectPosition="center"
+								sizes={"300px"}
 								alt={image.alt_description ?? ""}
 							/>
 						</CardMedia>
@@ -74,10 +73,9 @@ export default function Template({ data }: Props) {
 							avatar={
 								<Avatar>
 									<Image
+										fill
 										src={image.user.profile_image.small}
-										layout="fill"
-										objectFit="cover"
-										objectPosition="center"
+										sizes={"80px"}
 										alt={image.user.username}
 									/>
 								</Avatar>

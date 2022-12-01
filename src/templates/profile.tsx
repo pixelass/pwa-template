@@ -25,11 +25,10 @@ export default function Template() {
 							avatar={
 								<Avatar>
 									<Image
+										fill
 										src={session.user.image}
+										sizes={"80px"}
 										alt={session.user.name}
-										layout="fill"
-										objectFit="cover"
-										objectPosition="center"
 									/>
 								</Avatar>
 							}

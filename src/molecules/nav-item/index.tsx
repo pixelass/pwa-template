@@ -10,7 +10,7 @@ export interface NavItemProps extends Except<ListItemButtonProps, "selected" | "
 export default function NavItem({ children, href, ...props }: NavItemProps) {
 	const { pathname } = useRouter();
 	return (
-		<NextLink passHref href={href}>
+		<NextLink passHref legacyBehavior href={href}>
 			<ListItemButton
 				{...props}
 				selected={pathname === href}
