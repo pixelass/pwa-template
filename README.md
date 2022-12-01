@@ -2,6 +2,10 @@
 
 A template for Next.js with PWA support and i18n.
 
+Try the Demo: https://pwa-template.vercel.app/  
+User: Alex  
+Password: secret
+
 <img src="./docs/resources/next-logo.png" alt="next logo" width="50%"/><img src="./docs/resources/pwa-logo.png" alt="pwa logo" width="50%"/>
 
 <h2 align="center">100% Lighthouse score</h2>
