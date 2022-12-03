@@ -35,7 +35,7 @@ export default function Page() {
 						Katie Daw
 					</MuiLink>
 				</Typography>
-				<Link passHref href="/">
+				<Link legacyBehavior passHref href="/">
 					<MuiLink>Home</MuiLink>
 				</Link>
 			</Container>

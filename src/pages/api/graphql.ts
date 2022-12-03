@@ -1,12 +1,15 @@
-import { createServer } from "@graphql-yoga/node";
+import { createSchema, createYoga } from "graphql-yoga";
 
 import { images } from "@/mocks/images";
 
-const typeDefs = /* GraphQL */ `
+function gql([query]: TemplateStringsArray) {
+	return query;
+}
+
+const typeDefs = gql`
 	type Query {
 		images: [Image!]!
 	}
-
 	type ImageUrls {
 		raw: String!
 		full: String!
@@ -15,21 +18,18 @@ const typeDefs = /* GraphQL */ `
 		thumb: String!
 		small_s3: String!
 	}
-
 	type imageLinks {
 		self: String!
 		html: String!
 		download: String!
 		download_location: String!
 	}
-
 	type Social {
 		instagram_username: String
 		portfolio_url: String
 		twitter_username: String
 		paypal_email: String
 	}
-
 	type Links {
 		self: String!
 		html: String!
@@ -39,13 +39,11 @@ const typeDefs = /* GraphQL */ `
 		following: String!
 		followers: String!
 	}
-
 	type ProfileImage {
 		small: String!
 		medium: String!
 		large: String!
 	}
-
 	type User {
 		id: String!
 		updated_at: String!
@@ -67,7 +65,6 @@ const typeDefs = /* GraphQL */ `
 		links: Links!
 		profile_image: ProfileImage!
 	}
-
 	type Image {
 		id: String!
 		created_at: String!
@@ -95,12 +92,12 @@ const resolvers = {
 	},
 };
 
-const server = createServer({
-	schema: {
+const server = createYoga({
+	schema: createSchema({
 		typeDefs,
 		resolvers,
-	},
-	endpoint: "/api/graphql",
+	}),
+	graphqlEndpoint: "/api/graphql",
 	// graphiql: false // uncomment to disable GraphiQL
 });
 

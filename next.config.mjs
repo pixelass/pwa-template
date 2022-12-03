@@ -22,7 +22,7 @@ const withPWA = nextPWA({
 /**
  *  Make sentry compatible for plugin composer
  * @param nextConfig
- * @returns {import('next').NextConfigFunction |import('next').NextConfigObject}
+ * @returns {import('next').NextConfigFunction}
  */
 function withSentry(nextConfig) {
 	return withSentryConfig(nextConfig, {
@@ -70,4 +70,4 @@ const config = {
 	},
 };
 
-export default withPlugins([withSentry, withPWA, withTM], config);
+export default withPlugins([withPWA, withTM, withSentry], config);

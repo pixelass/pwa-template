@@ -37,7 +37,6 @@ Password: secret
 - [Sentry](https://sentry.io/)
 - [Jest](https://jestjs.io/)
 - [Commitlint](https://commitlint.js.org/)
-- [Stylelint](https://stylelint.io/)
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 
@@ -177,12 +176,6 @@ yarn run jest
 
 ```shell
 yarn run test
-```
-
-**Run stylelint**
-
-```shell
-yarn run stylelint
 ```
 
 **Run eslint**

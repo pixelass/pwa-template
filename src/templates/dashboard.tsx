@@ -61,11 +61,13 @@ export default function Template({ data }: Props) {
 							sx={{ position: "relative", height: image.height / 10, m: 0 }}
 						>
 							<Image
+								fill
 								src={image.urls.small}
-								layout="fill"
-								objectFit="cover"
-								objectPosition="center"
 								alt={image.alt_description ?? ""}
+								style={{
+									objectFit: "cover",
+									objectPosition: "center",
+								}}
 							/>
 						</CardMedia>
 						<CardHeader
@@ -74,11 +76,14 @@ export default function Template({ data }: Props) {
 							avatar={
 								<Avatar>
 									<Image
+										fill
 										src={image.user.profile_image.small}
-										layout="fill"
-										objectFit="cover"
-										objectPosition="center"
 										alt={image.user.username}
+										sizes="80px"
+										style={{
+											objectFit: "cover",
+											objectPosition: "center",
+										}}
 									/>
 								</Avatar>
 							}
