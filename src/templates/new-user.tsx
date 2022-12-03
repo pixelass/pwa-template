@@ -15,7 +15,7 @@ export default function Template() {
 					{t(`auth:newUser.headline`)}
 				</Typography>
 				<Typography>{t(`auth:newUser.body`)}</Typography>
-				<NextLink passHref href="/dashboard" shallow={false}>
+				<NextLink legacyBehavior passHref href="/dashboard" shallow={false}>
 					<Button component="a">{t("common:ok")}</Button>
 				</NextLink>
 			</Stack>

@@ -1,3 +1,1 @@
-{
-  "reject": ["stylelint", "stylelint-*", "@types/node"]
-}
+{}
